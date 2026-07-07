@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* ScentDuel light palette — warm amber/sand on cream. No indigo/blue. */
+  --background: oklch(0.985 0.008 75);
+  --foreground: oklch(0.22 0.02 40);
+  --card: oklch(1 0.005 75);
+  --card-foreground: oklch(0.22 0.02 40);
+  --popover: oklch(1 0.005 75);
+  --popover-foreground: oklch(0.22 0.02 40);
+  --primary: oklch(0.45 0.12 45);
+  --primary-foreground: oklch(0.98 0.01 75);
+  --secondary: oklch(0.94 0.02 70);
+  --secondary-foreground: oklch(0.3 0.03 45);
+  --muted: oklch(0.95 0.01 70);
+  --muted-foreground: oklch(0.5 0.02 50);
+  --accent: oklch(0.88 0.05 60);
+  --accent-foreground: oklch(0.3 0.05 40);
+  --destructive: oklch(0.55 0.22 27);
+  --border: oklch(0.9 0.02 70);
+  --input: oklch(0.92 0.01 70);
+  --ring: oklch(0.55 0.1 45);
+  --chart-1: oklch(0.55 0.14 45);
+  --chart-2: oklch(0.5 0.1 30);
+  --chart-3: oklch(0.6 0.12 70);
+  --chart-4: oklch(0.45 0.08 90);
+  --chart-5: oklch(0.4 0.05 50);
+  --sidebar: oklch(0.98 0.01 75);
+  --sidebar-foreground: oklch(0.22 0.02 40);
+  --sidebar-primary: oklch(0.45 0.12 45);
+  --sidebar-primary-foreground: oklch(0.98 0.01 75);
+  --sidebar-accent: oklch(0.94 0.02 70);
+  --sidebar-accent-foreground: oklch(0.3 0.03 45);
+  --sidebar-border: oklch(0.9 0.02 70);
+  --sidebar-ring: oklch(0.55 0.1 45);
+}
+
+.dark {
+  /* ScentDuel dark palette — deep espresso with warm amber accents. */
+  --background: oklch(0.16 0.012 45);
+  --foreground: oklch(0.94 0.015 75);
+  --card: oklch(0.21 0.015 45);
+  --card-foreground: oklch(0.94 0.015 75);
+  --popover: oklch(0.21 0.015 45);
+  --popover-foreground: oklch(0.94 0.015 75);
+  --primary: oklch(0.72 0.14 55);
+  --primary-foreground: oklch(0.18 0.02 40);
+  --secondary: oklch(0.27 0.02 45);
+  --secondary-foreground: oklch(0.94 0.015 75);
+  --muted: oklch(0.25 0.015 45);
+  --muted-foreground: oklch(0.7 0.02 60);
+  --accent: oklch(0.32 0.04 45);
+  --accent-foreground: oklch(0.94 0.015 75);
+  --destructive: oklch(0.65 0.2 25);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.6 0.1 50);
+  --chart-1: oklch(0.65 0.14 55);
+  --chart-2: oklch(0.55 0.1 35);
+  --chart-3: oklch(0.6 0.12 70);
+  --chart-4: oklch(0.5 0.08 90);
+  --chart-5: oklch(0.45 0.05 50);
+  --sidebar: oklch(0.21 0.015 45);
+  --sidebar-foreground: oklch(0.94 0.015 75);
+  --sidebar-primary: oklch(0.72 0.14 55);
+  --sidebar-primary-foreground: oklch(0.18 0.02 40);
+  --sidebar-accent: oklch(0.27 0.02 45);
+  --sidebar-accent-foreground: oklch(0.94 0.015 75);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.6 0.1 50);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  /* Visible focus states for accessibility. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+/* Custom scrollbar for long lists. */
+.scroll-area-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-area-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-area-thin::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 3px;
+  opacity: 0.3;
+}
+
+/* Prose styles for rendered markdown posts. */
+.prose-scentduel {
+  color: var(--foreground);
+  line-height: 1.75;
+}
+.prose-scentduel h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.prose-scentduel h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.prose-scentduel h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-scentduel p {
+  margin-bottom: 1.25rem;
+}
+.prose-scentduel ul {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+.prose-scentduel ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+}
+.prose-scentduel li {
+  margin-bottom: 0.5rem;
+}
+.prose-scentduel a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-scentduel a:hover {
+  opacity: 0.8;
+}
+.prose-scentduel strong {
+  font-weight: 700;
+}
+.prose-scentduel blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+.prose-scentduel table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+.prose-scentduel th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-bottom: 2px solid var(--border);
+  background: var(--muted);
+}
+.prose-scentduel td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.prose-scentduel tr:last-child td {
+  border-bottom: none;
+}
+.prose-scentduel hr {
+  margin: 2.5rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+.prose-scentduel code {
+  background: var(--muted);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: var(--font-mono);
+}

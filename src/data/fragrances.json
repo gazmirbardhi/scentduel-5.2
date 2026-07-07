@@ -1,0 +1,624 @@
+[
+  {
+    "slug": "bleu-de-chanel-edp",
+    "name": "Bleu de Chanel Eau de Parfum",
+    "brandSlug": "chanel",
+    "perfumerSlug": "jacques-polge",
+    "noteSlugs": ["bergamot", "cedar", "vetiver", "tonka", "musk"],
+    "longevityHours": 8,
+    "sillage": 7,
+    "value": 7,
+    "complimentFactor": 8,
+    "bestSeason": "All seasons",
+    "bestOccasion": "Office / Versatile",
+    "image": "/images/fragrances/bleu-de-chanel-edp.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2014,
+    "retailers": [
+      { "name": "Chanel.com", "price": "$135 / 100ml", "url": "https://www.chanel.com" },
+      { "name": "FragranceX", "price": "$109 / 100ml", "url": "https://www.fragrancex.com" },
+      { "name": "Sephora", "price": "$135 / 100ml", "url": "https://www.sephora.com" }
+    ]
+  },
+  {
+    "slug": "dior-sauvage-edp",
+    "name": "Dior Sauvage Eau de Parfum",
+    "brandSlug": "dior",
+    "perfumerSlug": "francois-demachy",
+    "noteSlugs": ["bergamot", "lavender", "amber", "musk", "patchouli"],
+    "longevityHours": 9,
+    "sillage": 8,
+    "value": 7,
+    "complimentFactor": 9,
+    "bestSeason": "All seasons",
+    "bestOccasion": "Date night / Versatile",
+    "image": "/images/fragrances/dior-sauvage-edp.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2018,
+    "retailers": [
+      { "name": "Dior.com", "price": "$135 / 100ml", "url": "https://www.dior.com" },
+      { "name": "FragranceX", "price": "$104 / 100ml", "url": "https://www.fragrancex.com" },
+      { "name": "Macy's", "price": "$135 / 100ml", "url": "https://www.macys.com" }
+    ]
+  },
+  {
+    "slug": "dior-sauvage-elixir",
+    "name": "Dior Sauvage Elixir",
+    "brandSlug": "dior",
+    "perfumerSlug": "francois-demachy",
+    "noteSlugs": ["bergamot", "lavender", "tonka", "patchouli", "saffron"],
+    "longevityHours": 12,
+    "sillage": 9,
+    "value": 6,
+    "complimentFactor": 9,
+    "bestSeason": "Winter / Fall",
+    "bestOccasion": "Date night / Night out",
+    "image": "/images/fragrances/dior-sauvage-elixir.svg",
+    "concentration": "Elixir (Parfum)",
+    "yearReleased": 2021,
+    "retailers": [
+      { "name": "Dior.com", "price": "$215 / 60ml", "url": "https://www.dior.com" },
+      { "name": "FragranceX", "price": "$175 / 60ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "creed-aventus",
+    "name": "Creed Aventus",
+    "brandSlug": "creed",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["bergamot", "cedar", "patchouli", "musk", "vanilla"],
+    "longevityHours": 7,
+    "sillage": 8,
+    "value": 4,
+    "complimentFactor": 10,
+    "bestSeason": "Spring / Summer",
+    "bestOccasion": "Date night / Special occasion",
+    "image": "/images/fragrances/creed-aventus.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2010,
+    "retailers": [
+      { "name": "Creed", "price": "$445 / 100ml", "url": "https://www.creedboutique.com" },
+      { "name": "FragranceX", "price": "$349 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "tom-ford-oud-wood",
+    "name": "Tom Ford Oud Wood",
+    "brandSlug": "tom-ford",
+    "perfumerSlug": "pierre-negrin",
+    "noteSlugs": ["oud", "sandalwood", "cedar", "tonka", "musk"],
+    "longevityHours": 8,
+    "sillage": 6,
+    "value": 5,
+    "complimentFactor": 7,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Special occasion / Evening",
+    "image": "/images/fragrances/tom-ford-oud-wood.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2007,
+    "retailers": [
+      { "name": "Tom Ford", "price": "$295 / 50ml", "url": "https://www.tomford.com" },
+      { "name": "Sephora", "price": "$295 / 50ml", "url": "https://www.sephora.com" }
+    ]
+  },
+  {
+    "slug": "tom-ford-tobacco-vanille",
+    "name": "Tom Ford Tobacco Vanille",
+    "brandSlug": "tom-ford",
+    "perfumerSlug": "pierre-negrin",
+    "noteSlugs": ["tobacco", "vanilla", "tonka", "cedar", "musk"],
+    "longevityHours": 11,
+    "sillage": 7,
+    "value": 5,
+    "complimentFactor": 8,
+    "bestSeason": "Winter",
+    "bestOccasion": "Special occasion / Cold weather",
+    "image": "/images/fragrances/tom-ford-tobacco-vanille.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2007,
+    "retailers": [
+      { "name": "Tom Ford", "price": "$295 / 50ml", "url": "https://www.tomford.com" },
+      { "name": "Neiman Marcus", "price": "$295 / 50ml", "url": "https://www.neimanmarcus.com" }
+    ]
+  },
+  {
+    "slug": "baccarat-rouge-540",
+    "name": "Maison Francis Kurkdjian Baccarat Rouge 540",
+    "brandSlug": "maison-francis-kurkdjian",
+    "perfumerSlug": "francis-kurkdjian",
+    "noteSlugs": ["saffron", "amber", "oud", "sandalwood", "musk"],
+    "longevityHours": 10,
+    "sillage": 9,
+    "value": 5,
+    "complimentFactor": 10,
+    "bestSeason": "All seasons",
+    "bestOccasion": "Special occasion / Versatile",
+    "image": "/images/fragrances/baccarat-rouge-540.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2015,
+    "retailers": [
+      { "name": "MFK", "price": "$325 / 70ml", "url": "https://www.franciskurkdjian.com" },
+      { "name": "Neiman Marcus", "price": "$325 / 70ml", "url": "https://www.neimanmarcus.com" }
+    ]
+  },
+  {
+    "slug": "terre-dhermes",
+    "name": "Hermès Terre d'Hermès",
+    "brandSlug": "hermes",
+    "perfumerSlug": "jean-claude-ellena",
+    "noteSlugs": ["bergamot", "vetiver", "cedar", "patchouli", "musk"],
+    "longevityHours": 8,
+    "sillage": 6,
+    "value": 8,
+    "complimentFactor": 7,
+    "bestSeason": "Spring / Summer / Fall",
+    "bestOccasion": "Office / Versatile",
+    "image": "/images/fragrances/terre-dhermes.svg",
+    "concentration": "Eau de Toilette",
+    "yearReleased": 2006,
+    "retailers": [
+      { "name": "Hermès", "price": "$120 / 100ml", "url": "https://www.hermes.com" },
+      { "name": "FragranceX", "price": "$92 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "guerlain-vetiver",
+    "name": "Guerlain Vetiver",
+    "brandSlug": "guerlain",
+    "perfumerSlug": "jean-claude-ellena",
+    "noteSlugs": ["vetiver", "bergamot", "tonka", "cedar", "lavender"],
+    "longevityHours": 7,
+    "sillage": 5,
+    "value": 9,
+    "complimentFactor": 6,
+    "bestSeason": "Spring / Summer",
+    "bestOccasion": "Office / Daytime",
+    "image": "/images/fragrances/guerlain-vetiver.svg",
+    "concentration": "Eau de Toilette",
+    "yearReleased": 1959,
+    "retailers": [
+      { "name": "Guerlain", "price": "$110 / 100ml", "url": "https://www.guerlain.com" },
+      { "name": "FragranceX", "price": "$78 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "ysl-la-nuit-de-lhomme",
+    "name": "YSL La Nuit de L'Homme",
+    "brandSlug": "ysl",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["bergamot", "lavender", "cedar", "tonka", "musk"],
+    "longevityHours": 6,
+    "sillage": 6,
+    "value": 8,
+    "complimentFactor": 9,
+    "bestSeason": "Fall / Winter / Spring",
+    "bestOccasion": "Date night",
+    "image": "/images/fragrances/ysl-la-nuit-de-lhomme.svg",
+    "concentration": "Eau de Toilette",
+    "yearReleased": 2009,
+    "retailers": [
+      { "name": "YSL Beauty", "price": "$105 / 100ml", "url": "https://www.yslbeauty.com" },
+      { "name": "FragranceX", "price": "$72 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "versace-eros",
+    "name": "Versace Eros",
+    "brandSlug": "versace",
+    "perfumerSlug": "olivier-crep",
+    "noteSlugs": ["vanilla", "tonka", "bergamot", "musk", "cedar"],
+    "longevityHours": 8,
+    "sillage": 9,
+    "value": 9,
+    "complimentFactor": 8,
+    "bestSeason": "Winter / Fall",
+    "bestOccasion": "Night out / Clubbing",
+    "image": "/images/fragrances/versace-eros.svg",
+    "concentration": "Eau de Toilette",
+    "yearReleased": 2012,
+    "retailers": [
+      { "name": "Versace", "price": "$92 / 100ml", "url": "https://www.versace.com" },
+      { "name": "FragranceX", "price": "$58 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "armaf-club-de-nuit-intense-man",
+    "name": "Armaf Club de Nuit Intense Man",
+    "brandSlug": "armaf",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["bergamot", "patchouli", "vanilla", "cedar", "musk"],
+    "longevityHours": 9,
+    "sillage": 9,
+    "value": 10,
+    "complimentFactor": 8,
+    "bestSeason": "Spring / Summer / Fall",
+    "bestOccasion": "Versatile / Budget pick",
+    "image": "/images/fragrances/armaf-club-de-nuit.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2014,
+    "retailers": [
+      { "name": "FragranceX", "price": "$35 / 105ml", "url": "https://www.fragrancex.com" },
+      { "name": "Amazon", "price": "$32 / 105ml", "url": "https://www.amazon.com" }
+    ]
+  },
+  {
+    "slug": "parfums-de-marly-layton",
+    "name": "Parfums de Marly Layton",
+    "brandSlug": "parfums-de-marly",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["vanilla", "bergamot", "lavender", "cedar", "musk"],
+    "longevityHours": 9,
+    "sillage": 8,
+    "value": 6,
+    "complimentFactor": 9,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Versatile / Special occasion",
+    "image": "/images/fragrances/parfums-de-marly-layton.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2016,
+    "retailers": [
+      { "name": "Parfums de Marly", "price": "$280 / 75ml", "url": "https://www.parfumsdemarly.com" },
+      { "name": "FragranceX", "price": "$219 / 75ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "jpg-le-male-le-parfum",
+    "name": "Jean Paul Gaultier Le Mâle Le Parfum",
+    "brandSlug": "jean-paul-gaultier",
+    "perfumerSlug": "francis-kurkdjian",
+    "noteSlugs": ["lavender", "vanilla", "tonka", "bergamot", "musk"],
+    "longevityHours": 10,
+    "sillage": 8,
+    "value": 8,
+    "complimentFactor": 9,
+    "bestSeason": "Winter / Fall",
+    "bestOccasion": "Date night / Night out",
+    "image": "/images/fragrances/jpg-le-male-le-parfum.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2020,
+    "retailers": [
+      { "name": "JPG", "price": "$95 / 75ml", "url": "https://www.jeanpaulgaultier.com" },
+      { "name": "FragranceX", "price": "$68 / 125ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "creed-green-irish-tweed",
+    "name": "Creed Green Irish Tweed",
+    "brandSlug": "creed",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["bergamot", "iris", "sandalwood", "musk", "amber"],
+    "longevityHours": 6,
+    "sillage": 6,
+    "value": 4,
+    "complimentFactor": 8,
+    "bestSeason": "Spring / Summer",
+    "bestOccasion": "Daytime / Office",
+    "image": "/images/fragrances/creed-green-irish-tweed.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 1985,
+    "retailers": [
+      { "name": "Creed", "price": "$395 / 100ml", "url": "https://www.creedboutique.com" },
+      { "name": "FragranceX", "price": "$299 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "dior-homme-intense",
+    "name": "Dior Homme Intense",
+    "brandSlug": "dior",
+    "perfumerSlug": "olivier-polge",
+    "noteSlugs": ["iris", "vanilla", "tonka", "musk", "amber"],
+    "longevityHours": 10,
+    "sillage": 7,
+    "value": 8,
+    "complimentFactor": 8,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Date night / Evening",
+    "image": "/images/fragrances/dior-homme-intense.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2011,
+    "retailers": [
+      { "name": "Dior.com", "price": "$135 / 100ml", "url": "https://www.dior.com" },
+      { "name": "FragranceX", "price": "$104 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "tom-ford-neroli-portofino",
+    "name": "Tom Ford Neroli Portofino",
+    "brandSlug": "tom-ford",
+    "perfumerSlug": "pierre-negrin",
+    "noteSlugs": ["neroli", "bergamot", "lavender", "musk", "amber"],
+    "longevityHours": 5,
+    "sillage": 6,
+    "value": 5,
+    "complimentFactor": 8,
+    "bestSeason": "Summer",
+    "bestOccasion": "Daytime / Resort / Vacation",
+    "image": "/images/fragrances/tom-ford-neroli-portofino.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2011,
+    "retailers": [
+      { "name": "Tom Ford", "price": "$270 / 50ml", "url": "https://www.tomford.com" },
+      { "name": "Sephora", "price": "$270 / 50ml", "url": "https://www.sephora.com" }
+    ]
+  },
+  {
+    "slug": "chanel-bleu-parfum",
+    "name": "Bleu de Chanel Parfum",
+    "brandSlug": "chanel",
+    "perfumerSlug": "olivier-polge",
+    "noteSlugs": ["bergamot", "cedar", "tonka", "sandalwood", "musk"],
+    "longevityHours": 10,
+    "sillage": 7,
+    "value": 7,
+    "complimentFactor": 8,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Evening / Special occasion",
+    "image": "/images/fragrances/chanel-bleu-parfum.svg",
+    "concentration": "Parfum",
+    "yearReleased": 2018,
+    "retailers": [
+      { "name": "Chanel.com", "price": "$150 / 100ml", "url": "https://www.chanel.com" },
+      { "name": "FragranceX", "price": "$119 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "tom-ford-black-orchid",
+    "name": "Tom Ford Black Orchid",
+    "brandSlug": "tom-ford",
+    "perfumerSlug": "pierre-negrin",
+    "noteSlugs": ["patchouli", "vanilla", "amber", "sandalwood", "musk"],
+    "longevityHours": 10,
+    "sillage": 8,
+    "value": 6,
+    "complimentFactor": 8,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Evening / Special occasion",
+    "image": "/images/fragrances/tom-ford-black-orchid.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2006,
+    "retailers": [
+      { "name": "Tom Ford", "price": "$210 / 50ml", "url": "https://www.tomford.com" },
+      { "name": "Sephora", "price": "$210 / 50ml", "url": "https://www.sephora.com" }
+    ]
+  },
+  {
+    "slug": "mfk-grand-soir",
+    "name": "Maison Francis Kurkdjian Grand Soir",
+    "brandSlug": "maison-francis-kurkdjian",
+    "perfumerSlug": "francis-kurkdjian",
+    "noteSlugs": ["amber", "vanilla", "tonka", "benzoin", "musk"],
+    "longevityHours": 12,
+    "sillage": 7,
+    "value": 6,
+    "complimentFactor": 8,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Evening / Special occasion",
+    "image": "/images/fragrances/mfk-grand-soir.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2016,
+    "retailers": [
+      { "name": "MFK", "price": "$235 / 70ml", "url": "https://www.franciskurkdjian.com" },
+      { "name": "Neiman Marcus", "price": "$235 / 70ml", "url": "https://www.neimanmarcus.com" }
+    ]
+  },
+  {
+    "slug": "hermes-voyage",
+    "name": "Hermès Voyage d'Hermès",
+    "brandSlug": "hermes",
+    "perfumerSlug": "jean-claude-ellena",
+    "noteSlugs": ["bergamot", "cedar", "musk", "vetiver", "amber"],
+    "longevityHours": 6,
+    "sillage": 5,
+    "value": 7,
+    "complimentFactor": 6,
+    "bestSeason": "Spring / Summer",
+    "bestOccasion": "Office / Daytime",
+    "image": "/images/fragrances/hermes-voyage.svg",
+    "concentration": "Eau de Toilette",
+    "yearReleased": 2010,
+    "retailers": [
+      { "name": "Hermès", "price": "$120 / 100ml", "url": "https://www.hermes.com" },
+      { "name": "FragranceX", "price": "$89 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "ysl-y-edp",
+    "name": "YSL Y Eau de Parfum",
+    "brandSlug": "ysl",
+    "perfumerSlug": "olivier-crep",
+    "noteSlugs": ["bergamot", "cedar", "tonka", "musk", "amber"],
+    "longevityHours": 8,
+    "sillage": 7,
+    "value": 7,
+    "complimentFactor": 7,
+    "bestSeason": "All seasons",
+    "bestOccasion": "Office / Versatile",
+    "image": "/images/fragrances/ysl-y-edp.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2018,
+    "retailers": [
+      { "name": "YSL Beauty", "price": "$120 / 100ml", "url": "https://www.yslbeauty.com" },
+      { "name": "FragranceX", "price": "$88 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "versace-dylan-blue",
+    "name": "Versace Dylan Blue",
+    "brandSlug": "versace",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["bergamot", "cedar", "tonka", "musk", "patchouli"],
+    "longevityHours": 7,
+    "sillage": 7,
+    "value": 9,
+    "complimentFactor": 8,
+    "bestSeason": "Spring / Summer",
+    "bestOccasion": "Versatile / Date night",
+    "image": "/images/fragrances/versace-dylan-blue.svg",
+    "concentration": "Eau de Toilette",
+    "yearReleased": 2016,
+    "retailers": [
+      { "name": "Versace", "price": "$90 / 100ml", "url": "https://www.versace.com" },
+      { "name": "FragranceX", "price": "$55 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "armaf-hunter-intense",
+    "name": "Armaf Hunter Intense",
+    "brandSlug": "armaf",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["bergamot", "lavender", "tonka", "patchouli", "amber"],
+    "longevityHours": 9,
+    "sillage": 8,
+    "value": 10,
+    "complimentFactor": 7,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Night out / Budget pick",
+    "image": "/images/fragrances/armaf-hunter-intense.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2017,
+    "retailers": [
+      { "name": "FragranceX", "price": "$30 / 100ml", "url": "https://www.fragrancex.com" },
+      { "name": "Amazon", "price": "$28 / 100ml", "url": "https://www.amazon.com" }
+    ]
+  },
+  {
+    "slug": "parfums-de-marly-herod",
+    "name": "Parfums de Marly Herod",
+    "brandSlug": "parfums-de-marly",
+    "perfumerSlug": "olivier-crep",
+    "noteSlugs": ["tobacco", "vanilla", "cinnamon", "musk", "patchouli"],
+    "longevityHours": 11,
+    "sillage": 8,
+    "value": 6,
+    "complimentFactor": 9,
+    "bestSeason": "Winter / Fall",
+    "bestOccasion": "Evening / Cold weather",
+    "image": "/images/fragrances/parfums-de-marly-herod.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2012,
+    "retailers": [
+      { "name": "Parfums de Marly", "price": "$280 / 75ml", "url": "https://www.parfumsdemarly.com" },
+      { "name": "FragranceX", "price": "$219 / 75ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "creed-silver-mountain-water",
+    "name": "Creed Silver Mountain Water",
+    "brandSlug": "creed",
+    "perfumerSlug": "alberto-morillas",
+    "noteSlugs": ["bergamot", "neroli", "musk", "cedar", "iris"],
+    "longevityHours": 5,
+    "sillage": 5,
+    "value": 4,
+    "complimentFactor": 7,
+    "bestSeason": "Summer",
+    "bestOccasion": "Daytime / Resort",
+    "image": "/images/fragrances/creed-silver-mountain-water.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 1998,
+    "retailers": [
+      { "name": "Creed", "price": "$395 / 100ml", "url": "https://www.creedboutique.com" },
+      { "name": "FragranceX", "price": "$299 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "dior-fahrenheit",
+    "name": "Dior Fahrenheit",
+    "brandSlug": "dior",
+    "perfumerSlug": "francois-demachy",
+    "noteSlugs": ["bergamot", "cedar", "patchouli", "violet", "musk"],
+    "longevityHours": 8,
+    "sillage": 7,
+    "value": 8,
+    "complimentFactor": 7,
+    "bestSeason": "Spring / Fall",
+    "bestOccasion": "Daytime / Office",
+    "image": "/images/fragrances/dior-fahrenheit.svg",
+    "concentration": "Eau de Toilette",
+    "yearReleased": 1988,
+    "retailers": [
+      { "name": "Dior.com", "price": "$105 / 100ml", "url": "https://www.dior.com" },
+      { "name": "FragranceX", "price": "$72 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "guerlain-lhomme-ideal",
+    "name": "Guerlain L'Homme Idéal Eau de Parfum",
+    "brandSlug": "guerlain",
+    "perfumerSlug": "olivier-polge",
+    "noteSlugs": ["almond", "tonka", "vanilla", "cedar", "musk"],
+    "longevityHours": 9,
+    "sillage": 7,
+    "value": 8,
+    "complimentFactor": 8,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Versatile / Date night",
+    "image": "/images/fragrances/guerlain-lhomme-ideal.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2016,
+    "retailers": [
+      { "name": "Guerlain", "price": "$130 / 100ml", "url": "https://www.guerlain.com" },
+      { "name": "FragranceX", "price": "$92 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "tom-ford-ombre-leather",
+    "name": "Tom Ford Ombre Leather",
+    "brandSlug": "tom-ford",
+    "perfumerSlug": "pierre-negrin",
+    "noteSlugs": ["leather", "amber", "patchouli", "cedar", "musk"],
+    "longevityHours": 10,
+    "sillage": 7,
+    "value": 7,
+    "complimentFactor": 7,
+    "bestSeason": "Fall / Winter",
+    "bestOccasion": "Evening / Special occasion",
+    "image": "/images/fragrances/tom-ford-ombre-leather.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2018,
+    "retailers": [
+      { "name": "Tom Ford", "price": "$210 / 50ml", "url": "https://www.tomford.com" },
+      { "name": "Sephora", "price": "$210 / 50ml", "url": "https://www.sephora.com" }
+    ]
+  },
+  {
+    "slug": "jpg-ultra-male",
+    "name": "Jean Paul Gaultier Ultra Male",
+    "brandSlug": "jean-paul-gaultier",
+    "perfumerSlug": "francis-kurkdjian",
+    "noteSlugs": ["bergamot", "lavender", "vanilla", "tonka", "amber"],
+    "longevityHours": 9,
+    "sillage": 8,
+    "value": 9,
+    "complimentFactor": 9,
+    "bestSeason": "Winter / Fall",
+    "bestOccasion": "Date night / Night out",
+    "image": "/images/fragrances/jpg-ultra-male.svg",
+    "concentration": "Eau de Toilette Intense",
+    "yearReleased": 2015,
+    "retailers": [
+      { "name": "JPG", "price": "$95 / 75ml", "url": "https://www.jeanpaulgaultier.com" },
+      { "name": "FragranceX", "price": "$65 / 125ml", "url": "https://www.fragrancex.com" }
+    ]
+  },
+  {
+    "slug": "hermes-terre-intense-vetiver",
+    "name": "Hermès Terre d'Hermès Eau Intense Vétiver",
+    "brandSlug": "hermes",
+    "perfumerSlug": "jean-claude-ellena",
+    "noteSlugs": ["vetiver", "bergamot", "cedar", "patchouli", "tonka"],
+    "longevityHours": 9,
+    "sillage": 7,
+    "value": 8,
+    "complimentFactor": 7,
+    "bestSeason": "Spring / Summer / Fall",
+    "bestOccasion": "Office / Versatile",
+    "image": "/images/fragrances/hermes-terre-intense-vetiver.svg",
+    "concentration": "Eau de Parfum",
+    "yearReleased": 2018,
+    "retailers": [
+      { "name": "Hermès", "price": "$135 / 100ml", "url": "https://www.hermes.com" },
+      { "name": "FragranceX", "price": "$98 / 100ml", "url": "https://www.fragrancex.com" }
+    ]
+  }
+]

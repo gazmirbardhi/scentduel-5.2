@@ -1,0 +1,16 @@
+{
+  "lastUpdated": "2024-11-15",
+  "description": "Illustrative Scent of the Day leaderboard. This file is manually curated by the site owner from the (client-side localStorage) picks submitted by visitors — it is NOT live-aggregated data. See the README for how to update it.",
+  "leaderboard": [
+    { "rank": 1, "fragranceSlug": "dior-sauvage-edp", "picks": 1284 },
+    { "rank": 2, "fragranceSlug": "bleu-de-chanel-edp", "picks": 1102 },
+    { "rank": 3, "fragranceSlug": "baccarat-rouge-540", "picks": 968 },
+    { "rank": 4, "fragranceSlug": "creed-aventus", "picks": 845 },
+    { "rank": 5, "fragranceSlug": "armaf-club-de-nuit-intense-man", "picks": 791 },
+    { "rank": 6, "fragranceSlug": "tom-ford-oud-wood", "picks": 632 },
+    { "rank": 7, "fragranceSlug": "terre-dhermes", "picks": 588 },
+    { "rank": 8, "fragranceSlug": "parfums-de-marly-layton", "picks": 524 },
+    { "rank": 9, "fragranceSlug": "ysl-la-nuit-de-lhomme", "picks": 489 },
+    { "rank": 10, "fragranceSlug": "dior-sauvage-elixir", "picks": 446 }
+  ]
+}
