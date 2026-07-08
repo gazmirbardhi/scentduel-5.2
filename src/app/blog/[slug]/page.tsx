@@ -136,10 +136,10 @@ export default async function BlogPostPage({ params }: PageProps) {
               </Badge>
             </Link>
           )}
-          <h1 className="font-serif text-[1.875rem] leading-[1.15] font-bold tracking-tight md:text-4xl lg:text-5xl">
+          <h1 className="font-serif text-[1.625rem] leading-tight font-bold tracking-tight md:text-3xl lg:text-4xl">
             {post.title}
           </h1>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground md:text-xl">{post.excerpt}</p>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground md:text-lg">{post.excerpt}</p>
           <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <User className="h-4 w-4" aria-hidden="true" />

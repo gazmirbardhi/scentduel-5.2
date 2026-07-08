@@ -46,12 +46,12 @@ interface MobileNavItem {
 }
 
 const mobileNavItems: MobileNavItem[] = [
-  { label: "Reviews", href: "/categories/reviews", icon: <BookOpen className="h-6 w-6" />, description: "In-depth fragrance reviews" },
-  { label: "Comparisons", href: "/categories/comparisons", icon: <Swords className="h-6 w-6" />, description: "Head-to-head matchups" },
-  { label: "Note Glossary", href: "/notes", icon: <Layers className="h-6 w-6" />, description: "55 ingredient profiles" },
-  { label: "Brands", href: "/brands", icon: <Building2 className="h-6 w-6" />, description: "12 house profiles" },
-  { label: "Perfumers", href: "/perfumers", icon: <UserRound className="h-6 w-6" />, description: "9 master noses" },
-  { label: "Tools", href: "/tools", icon: <Sparkles className="h-6 w-6" />, description: "11 free tools & games" },
+  { label: "Reviews", href: "/categories/reviews", icon: <BookOpen className="h-5 w-5" />, description: "In-depth fragrance reviews" },
+  { label: "Comparisons", href: "/categories/comparisons", icon: <Swords className="h-5 w-5" />, description: "Head-to-head matchups" },
+  { label: "Note Glossary", href: "/notes", icon: <Layers className="h-5 w-5" />, description: "55 ingredient profiles" },
+  { label: "Brands", href: "/brands", icon: <Building2 className="h-5 w-5" />, description: "12 house profiles" },
+  { label: "Perfumers", href: "/perfumers", icon: <UserRound className="h-5 w-5" />, description: "9 master noses" },
+  { label: "Tools", href: "/tools", icon: <Sparkles className="h-5 w-5" />, description: "11 free tools & games" },
 ];
 
 interface SearchResult {
@@ -156,7 +156,7 @@ export function Header() {
               aria-label="Search articles, notes, brands, and perfumers"
               className="h-11 w-11"
             >
-              <Search className="h-6! w-6!" />
+               <Search className="h-5! w-5!" />
             </Button>
 
             <Button
@@ -166,7 +166,7 @@ export function Header() {
               aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
               className="h-11 w-11"
             >
-              {theme === "light" ? <Moon className="h-6! w-6!" /> : <Sun className="h-6! w-6!" />}
+               {theme === "light" ? <Moon className="h-5! w-5!" /> : <Sun className="h-5! w-5!" />}
             </Button>
 
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -177,7 +177,7 @@ export function Header() {
                   className="h-11 w-11 md:hidden"
                   aria-label="Open navigation menu"
                 >
-                  <Menu className="h-7! w-7!" />
+                   <Menu className="h-5! w-5!" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[85vw] max-w-sm p-0">
@@ -213,7 +213,7 @@ export function Header() {
                     >
                       <span
                         className={cn(
-                          "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary",
+                          "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary",
                           isActive(item.href) && "bg-primary text-primary-foreground"
                         )}
                         aria-hidden="true"
