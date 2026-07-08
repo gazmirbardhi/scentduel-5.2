@@ -70,12 +70,12 @@ export function Header() {
           <img
             src="/images/icons/logo.svg"
             alt=""
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-lg"
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-lg sm:h-9 sm:w-9"
             aria-hidden="true"
           />
-          <span className="hidden sm:inline">{siteConfig.name}</span>
+          <span className="text-lg sm:text-xl">{siteConfig.name}</span>
         </Link>
 
         {/* Desktop nav */}

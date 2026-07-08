@@ -7,17 +7,29 @@ import { cn } from "@/lib/utils";
 
 interface TableOfContentsProps {
   items: TableOfContentsItem[];
+  /**
+   * "both" (default): renders mobile bar + desktop sidebar (toggled by CSS).
+   * "mobile": renders only the mobile sticky bar (for placement in a tall
+   *   container so sticky works through the whole article scroll).
+   * "desktop": renders only the desktop sidebar.
+   */
+  variant?: "both" | "mobile" | "desktop";
 }
 
 /**
- * Table of contents for blog posts.
+ * Table of contents that adapts to viewport:
  *
- * - On desktop (lg+): rendered as a sticky sidebar card with active-section
- *   highlighting via scroll tracking.
- * - On mobile: rendered as a collapsible accordion below the title, defaulting
- *   to closed so it doesn't push the article body down.
+ * - **Mobile**: sticky bar below the header. Collapsed by default showing
+ *   "On this page" + chevron. Taps expand a scrollable list. Sticks to the
+ *   top of the viewport while reading so it's always accessible.
+ * - **Desktop (lg+)**: sticky sidebar card with active-section highlighting.
+ *
+ * For the mobile sticky bar to work, it must be rendered inside a container
+ * that spans the full article height. Use variant="mobile" and place it
+ * directly in the body column (without a wrapper div that would limit the
+ * sticky range).
  */
-export function TableOfContents({ items }: TableOfContentsProps) {
+export function TableOfContents({ items, variant = "both" }: TableOfContentsProps) {
   const [activeId, setActiveId] = React.useState<string>("");
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -31,7 +43,6 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Pick the entry closest to the top that's intersecting.
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
@@ -52,26 +63,53 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-      // Update hash without jumping
       history.replaceState(null, "", `#${id}`);
       setMobileOpen(false);
     }
   };
 
-  return (
-    <>
-      {/* Mobile: collapsible accordion */}
-      <div className="mb-6 lg:hidden">
+  const list = (
+    <ul className="space-y-0.5">
+      {items.map((item) => (
+        <li key={item.id}>
+          <a
+            href={`#${item.id}`}
+            onClick={(e) => handleClick(e, item.id)}
+            className={cn(
+              "block rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
+              item.level === 3 && "pl-5 text-xs",
+              activeId === item.id && "bg-accent/60 font-medium text-foreground"
+            )}
+          >
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+
+  const showMobile = variant === "both" || variant === "mobile";
+  const showDesktop = variant === "both" || variant === "desktop";
+
+  // When variant="mobile", we render the sticky bar WITHOUT a <nav> wrapper
+  // so the bar's containing block is the tall body column (not a short nav).
+  // This is what makes sticky work through the whole article scroll.
+  if (variant === "mobile") {
+    return (
+      <nav
+        aria-label="Table of contents"
+        className="lg:hidden sticky top-16 z-30 -mx-4 mb-6 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+      >
         <button
           type="button"
           onClick={() => setMobileOpen((v) => !v)}
-          className="flex w-full items-center justify-between rounded-lg border border-border bg-card px-4 py-3 text-left"
+          className="flex w-full items-center justify-between px-4 py-3 text-left"
           aria-expanded={mobileOpen}
-          aria-controls="toc-mobile"
+          aria-controls="toc-mobile-content"
         >
           <span className="flex items-center gap-2 text-sm font-semibold">
             <ListOrdered className="h-4 w-4 text-primary" aria-hidden="true" />
-            Table of contents
+            On this page
           </span>
           <ChevronDown
             className={cn("h-4 w-4 text-muted-foreground transition-transform", mobileOpen && "rotate-180")}
@@ -79,63 +117,74 @@ export function TableOfContents({ items }: TableOfContentsProps) {
           />
         </button>
         {mobileOpen && (
-          <nav
-            id="toc-mobile"
-            className="mt-2 max-h-80 overflow-y-auto rounded-lg border border-border bg-card p-3 scroll-area-thin"
-            aria-label="Table of contents"
+          <div
+            id="toc-mobile-content"
+            className="max-h-72 overflow-y-auto border-t border-border px-4 py-3 scroll-area-thin"
           >
-            <ul className="space-y-0.5">
-              {items.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    onClick={(e) => handleClick(e, item.id)}
-                    className={cn(
-                      "block rounded px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground",
-                      item.level === 3 && "pl-6 text-xs",
-                      activeId === item.id && "bg-accent font-medium text-foreground"
-                    )}
-                  >
-                    {item.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            {list}
+          </div>
         )}
-      </div>
+      </nav>
+    );
+  }
 
-      {/* Desktop: sticky sidebar */}
-      <nav
-        className="hidden lg:block"
-        aria-label="Table of contents"
-      >
+  if (variant === "desktop") {
+    return (
+      <nav aria-label="Table of contents" className="text-sm hidden lg:block">
         <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto scroll-area-thin">
           <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
             <ListOrdered className="h-4 w-4 text-primary" aria-hidden="true" />
             On this page
           </p>
-          <ul className="space-y-0.5 border-l border-border">
-            {items.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={(e) => handleClick(e, item.id)}
-                  className={cn(
-                    "block border-l-2 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground -ml-px",
-                    item.level === 3 && "pl-6 text-xs",
-                    activeId === item.id
-                      ? "border-primary font-medium text-foreground"
-                      : "border-transparent"
-                  )}
-                >
-                  {item.text}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="border-l border-border pl-2">
+            {list}
+          </div>
         </div>
       </nav>
-    </>
+    );
+  }
+
+  // variant === "both" — render both (used when a single instance handles
+  // both breakpoints via CSS show/hide).
+  return (
+    <nav aria-label="Table of contents" className="text-sm">
+      <div className="lg:hidden sticky top-16 z-30 -mx-4 mb-6 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+        <button
+          type="button"
+          onClick={() => setMobileOpen((v) => !v)}
+          className="flex w-full items-center justify-between px-4 py-3 text-left"
+          aria-expanded={mobileOpen}
+          aria-controls="toc-mobile-content"
+        >
+          <span className="flex items-center gap-2 text-sm font-semibold">
+            <ListOrdered className="h-4 w-4 text-primary" aria-hidden="true" />
+            On this page
+          </span>
+          <ChevronDown
+            className={cn("h-4 w-4 text-muted-foreground transition-transform", mobileOpen && "rotate-180")}
+            aria-hidden="true"
+          />
+        </button>
+        {mobileOpen && (
+          <div
+            id="toc-mobile-content"
+            className="max-h-72 overflow-y-auto border-t border-border px-4 py-3 scroll-area-thin"
+          >
+            {list}
+          </div>
+        )}
+      </div>
+      <div className="hidden lg:block">
+        <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto scroll-area-thin">
+          <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground">
+            <ListOrdered className="h-4 w-4 text-primary" aria-hidden="true" />
+            On this page
+          </p>
+          <div className="border-l border-border pl-2">
+            {list}
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }

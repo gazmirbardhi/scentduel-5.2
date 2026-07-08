@@ -130,10 +130,10 @@ export default async function BlogPostPage({ params }: PageProps) {
               </Badge>
             </Link>
           )}
-          <h1 className="font-serif text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
+          <h1 className="font-serif text-[1.875rem] leading-[1.15] font-bold tracking-tight md:text-4xl lg:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-4 text-base text-muted-foreground md:text-lg">{post.excerpt}</p>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground md:text-xl">{post.excerpt}</p>
           <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <User className="h-4 w-4" aria-hidden="true" />
@@ -151,7 +151,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </header>
 
         {/* Hero image — full-width banner */}
-        <figure className="mb-8 -mx-4 md:mx-0 md:rounded-xl overflow-hidden bg-muted">
+        <figure className="mb-6 -mx-4 md:mx-0 md:rounded-xl overflow-hidden bg-muted">
           <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
             <img
               src={post.featuredImage}
@@ -164,20 +164,24 @@ export default async function BlogPostPage({ params }: PageProps) {
           <figcaption className="sr-only">{post.featuredImageAlt}</figcaption>
         </figure>
 
-        {/* Mobile TOC — collapsible, shown above the body */}
-        <TableOfContents items={post.toc} />
-
-        {/* Desktop layout: body + sticky TOC sidebar */}
-        <div className="flex gap-10">
+        {/* Desktop layout: body + sticky TOC sidebar. On mobile, the TOC
+            sticky bar is rendered directly in the body column (no wrapper) so
+            it can stick through the entire article scroll. */}
+        <div className="flex gap-12">
           <div className="min-w-0 flex-1 max-w-3xl">
+            {/* Mobile TOC — sticky bar, rendered directly here (not in a
+                wrapper div) so the sticky containing block is the full body
+                column and the bar stays stuck while reading. */}
+            <TableOfContents items={post.toc} variant="mobile" />
+
             {/* TL;DR */}
             {post.tldr && <Tldr text={post.tldr} />}
 
             <PostContent content={post.content} />
           </div>
           {/* Desktop TOC sidebar */}
-          <aside className="hidden w-56 shrink-0 lg:block">
-            <TableOfContents items={post.toc} />
+          <aside className="hidden w-60 shrink-0 lg:block">
+            <TableOfContents items={post.toc} variant="desktop" />
           </aside>
         </div>
 

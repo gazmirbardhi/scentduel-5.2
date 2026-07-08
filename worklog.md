@@ -404,3 +404,34 @@ Stage Summary:
 - Lint: 0 errors. check-links: 0 broken.
 - Agent Browser verified: back-to-top works, mobile menu has 72px touch targets with 24px icons, TOC expands to 14 links, TL;DR present, AI Quick Questions present with FAQPage JSON-LD, answers mention ScentDuel, desktop TOC sidebar sticky with active highlighting.
 - All icon sizes increased for mobile readability (menu 28px, theme 24px, nav icons 24px, logo 36px).
+
+---
+Task ID: TYPOGRAPHY-POLISH
+Agent: main (orchestrator)
+Task: Fix duplicate TOC, show ScentDuel on mobile navbar, polish typography for eye comfort
+
+Work Log:
+- Fixed duplicate TOC: rewrote TableOfContents component with variant prop ("mobile"/"desktop"/"both"). Mobile variant renders the <nav> with sticky directly (no wrapper div) so the containing block is the full body column. Desktop variant renders only the sidebar. Blog post now renders variant="mobile" in body column and variant="desktop" in aside — 1 visible TOC on each breakpoint.
+- Fixed mobile sticky TOC: the previous wrapper div (<div className="lg:hidden">) created a short containing block that prevented sticky from working. Now the <nav> itself has sticky top-16 and is a direct child of the body column (which spans the full 9000px+ article height). Verified: nav sticks at top:64px through scroll.
+- Showed "ScentDuel" word in mobile navbar: removed `hidden sm:inline` from the site name span, now always visible. Logo slightly smaller on mobile (32px) scaling up to 36px on sm+.
+- Polished typography for eye comfort:
+  * Base body: 16px, line-height 1.6, letter-spacing -0.002em, font-smoothing antialiased, text-rendering optimizeLegibility
+  * Prose body: 18px (was 17px mobile / 16px desktop), line-height 1.75 (~31.5px leading), letter-spacing -0.003em, word-spacing 0.05em
+  * Prose h1: 36px mobile / 48px desktop, line-height 1.2, letter-spacing -0.02em
+  * Prose h2: 22px mobile / 26px desktop, line-height 1.3, letter-spacing -0.015em, 3rem top margin
+  * Prose h3: 18px mobile / 20px desktop, line-height 1.35
+  * Paragraphs: 1.5rem bottom margin (was 1.25rem) for better section separation
+  * Lists: tighter 1.65 line-height, primary-colored markers
+  * Links: text-decoration-thickness 1px, underline-offset 3px, font-weight 500
+  * Tables: 15px, 0.75rem 1rem padding, vertical-align top
+  * Blockquotes: 17px, 1.75rem margin
+  * HR: 3rem margin
+- Removed conflicting inline Tailwind classes from PostContent h2/h3 (was overriding CSS with text-2xl/text-xl). Now only scroll-mt-24 is applied inline; all sizing from .prose-scentduel CSS.
+- Updated blog post h1: 30px on mobile (was text-3xl=30px but with leading-tight), now uses leading-[1.15] for tighter heading. Excerpt: text-lg (18px) on mobile, text-xl (20px) on desktop (was text-base/text-lg).
+- Updated TL;DR: text-base (16px) on mobile, text-lg (18px) on desktop (was text-sm/text-base). Larger icon container (h-8 w-8), tracking-wider on label.
+
+Stage Summary:
+- Lint: 0 errors. check-links: 0 broken.
+- Mobile: 1 visible sticky TOC (sticks at 64px through scroll), ScentDuel in navbar, 18px body text, 31.5px line-height.
+- Desktop: 1 visible TOC sidebar (240px), 18px body text, no duplicate.
+- No console errors.

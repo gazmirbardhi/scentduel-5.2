@@ -16,14 +16,14 @@ export function Tldr({ text }: TldrProps) {
     >
       <div className="flex items-start gap-3">
         <span
-          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground"
+          className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground"
           aria-hidden="true"
         >
           <Zap className="h-4 w-4" />
         </span>
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-primary">TL;DR</p>
-          <p className="mt-0.5 text-sm leading-relaxed text-foreground sm:text-base">{text}</p>
+        <div className="min-w-0">
+          <p className="text-xs font-bold uppercase tracking-wider text-primary">TL;DR</p>
+          <p className="mt-1 text-base leading-relaxed text-foreground sm:text-lg">{text}</p>
         </div>
       </div>
     </aside>

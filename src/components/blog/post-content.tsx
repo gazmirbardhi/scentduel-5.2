@@ -54,11 +54,7 @@ const components: Components = {
     const { children, ...rest } = withoutNode(props);
     const text = extractText(children);
     return (
-      <h2
-        {...rest}
-        id={slugify(text)}
-        className="mt-10 scroll-mt-24 border-b border-border pb-2 font-serif text-2xl font-bold leading-tight text-foreground"
-      >
+      <h2 {...rest} id={slugify(text)} className="scroll-mt-24">
         {children}
       </h2>
     );
@@ -67,11 +63,7 @@ const components: Components = {
     const { children, ...rest } = withoutNode(props);
     const text = extractText(children);
     return (
-      <h3
-        {...rest}
-        id={slugify(text)}
-        className="mt-8 scroll-mt-24 font-serif text-xl font-bold leading-tight text-foreground"
-      >
+      <h3 {...rest} id={slugify(text)} className="scroll-mt-24">
         {children}
       </h3>
     );
