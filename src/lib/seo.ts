@@ -33,7 +33,7 @@ export function buildMetadata({
   title,
   description,
   path,
-  image = "/images/og/default.svg",
+  image = "/images/og/default.avif",
   type = "website",
   publishedTime,
   modifiedTime,

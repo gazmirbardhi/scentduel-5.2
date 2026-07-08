@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Clock, Tag } from "lucide-react";
 import type { Post } from "@/lib/posts";
 import { getCategory } from "@/lib/categories";
@@ -21,12 +22,11 @@ export function PostCard({ post, compact = false }: PostCardProps) {
         style={{ aspectRatio: "16 / 9" }}
         aria-label={`Read: ${post.title}`}
       >
-        <img
+        <Image
           src={post.featuredImage}
           alt={post.featuredImageAlt}
           width={640}
           height={360}
-          loading="lazy"
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </Link>

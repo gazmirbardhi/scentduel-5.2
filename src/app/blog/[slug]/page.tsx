@@ -63,9 +63,10 @@ export default async function BlogPostPage({ params }: PageProps) {
     day: "numeric",
   });
 
-  // JSON-LD: BlogPosting schema. Rating is sourced from the editorial verdict
-  // in the post body, NEVER from the localStorage ReviewPoll. See ReviewPoll
-  // component for the seeded-data caveat.
+  // JSON-LD: BlogPosting schema with embedded Review + Person author.
+  // Rating is sourced from the editorial verdict in the post body, NEVER
+  // from the localStorage ReviewPoll. See ReviewPoll component for the
+  // seeded-data caveat.
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -78,6 +79,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       "@type": "Person",
       name: post.author,
       url: `${siteConfig.url}/author`,
+      description: siteConfig.author.bio,
     },
     publisher: {
       "@type": "Organization",
@@ -91,6 +93,10 @@ export default async function BlogPostPage({ params }: PageProps) {
     articleSection: category?.label,
     keywords: post.tags.join(", "),
     wordCount: post.wordCount,
+    about: {
+      "@type": "Thing",
+      name: "Fragrance",
+    },
   };
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
