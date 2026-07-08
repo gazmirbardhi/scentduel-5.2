@@ -179,9 +179,9 @@ export function SotdWidget() {
         )}
 
         <div className="space-y-2">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Community Leaderboard
-          </h4>
+          </div>
           <ScrollArea className="max-h-64 rounded-md border border-border">
             <ol className="divide-y divide-border">
               {topFive.map((row) => {

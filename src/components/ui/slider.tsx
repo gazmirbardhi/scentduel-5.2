@@ -23,6 +23,11 @@ function Slider({
     [value, defaultValue, min, max]
   )
 
+  // Extract ARIA props that need to be forwarded to each Thumb
+  const ariaLabel = props["aria-label"]
+  const ariaLabelledby = props["aria-labelledby"]
+  const sliderId = props.id
+
   return (
     <SliderPrimitive.Root
       data-slot="slider"
@@ -53,6 +58,9 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
+          id={sliderId ? `${sliderId}-thumb-${index}` : undefined}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledby}
           className="border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
         />
       ))}
