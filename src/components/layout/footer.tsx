@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FlaskConical } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 import { categories } from "@/lib/categories";
 
@@ -17,9 +16,14 @@ export function Footer() {
               href="/"
               className="flex items-center gap-2 font-serif text-lg font-bold"
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <FlaskConical className="h-4 w-4" />
-              </span>
+              <img
+                src="/images/icons/logo.svg"
+                alt=""
+                width={28}
+                height={28}
+                className="h-7 w-7 rounded-md"
+                aria-hidden="true"
+              />
               {siteConfig.name}
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">

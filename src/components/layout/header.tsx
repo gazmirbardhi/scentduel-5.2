@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Sun, Moon, FlaskConical } from "lucide-react";
+import { Menu, Sun, Moon } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
@@ -39,12 +39,14 @@ export function Header() {
           className="flex items-center gap-2 font-serif text-xl font-bold tracking-tight"
           aria-label={`${siteConfig.name} home`}
         >
-          <span
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+          <img
+            src="/images/icons/logo.svg"
+            alt=""
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-lg"
             aria-hidden="true"
-          >
-            <FlaskConical className="h-5 w-5" />
-          </span>
+          />
           <span className="hidden sm:inline">{siteConfig.name}</span>
         </Link>
 

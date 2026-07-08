@@ -1,14 +1,6 @@
 import ReactMarkdown, { type Components } from "react-markdown";
+import remarkGfm from "remark-gfm";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 interface PostContentProps {
   content: string;
@@ -61,6 +53,19 @@ const components: Components = {
       </a>
     );
   },
+  ul: (props) => (
+    <ul
+      {...withoutNode(props)}
+      className="my-5 list-disc space-y-1.5 pl-6 marker:text-primary"
+    />
+  ),
+  ol: (props) => (
+    <ol
+      {...withoutNode(props)}
+      className="my-5 list-decimal space-y-1.5 pl-6 marker:font-semibold marker:text-primary"
+    />
+  ),
+  li: (props) => <li {...withoutNode(props)} className="leading-relaxed" />,
   blockquote: (props) => (
     <blockquote
       {...withoutNode(props)}
@@ -87,27 +92,47 @@ const components: Components = {
       />
     );
   },
+  // Wrap the table in an overflow-x-auto container so wide tables scroll
+  // horizontally on mobile instead of breaking the layout. Use a plain
+  // <table> with Tailwind classes rather than the shadcn Table primitives —
+  // the primitives override display:table on cells which can conflict with
+  // react-markdown's table model.
   table: (props) => (
-    <div className="my-6">
-      <Table {...withoutNode(props)} />
+    <div className="my-6 overflow-x-auto rounded-lg border border-border">
+      <table
+        {...withoutNode(props)}
+        className="w-full border-collapse text-sm"
+      />
     </div>
   ),
-  thead: (props) => <TableHeader {...withoutNode(props)} />,
-  tbody: (props) => <TableBody {...withoutNode(props)} />,
-  tr: (props) => <TableRow {...withoutNode(props)} />,
-  th: (props) => (
-    <TableHead
+  thead: (props) => <thead {...withoutNode(props)} className="bg-muted" />,
+  tbody: (props) => <tbody {...withoutNode(props)} />,
+  tr: (props) => (
+    <tr
       {...withoutNode(props)}
-      className={cn("[&:not(:first-child)]:text-left")}
+      className="border-b border-border last:border-b-0 even:bg-muted/30"
     />
   ),
-  td: (props) => <TableCell {...withoutNode(props)} />,
+  th: (props) => (
+    <th
+      {...withoutNode(props)}
+      className="border-b border-border px-4 py-3 text-left font-semibold text-foreground"
+    />
+  ),
+  td: (props) => (
+    <td
+      {...withoutNode(props)}
+      className="px-4 py-3 text-foreground align-top"
+    />
+  ),
 };
 
 export function PostContent({ content }: PostContentProps) {
   return (
     <div className="prose-scentduel max-w-none">
-      <ReactMarkdown components={components}>{content}</ReactMarkdown>
+      <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
+        {content}
+      </ReactMarkdown>
     </div>
   );
 }

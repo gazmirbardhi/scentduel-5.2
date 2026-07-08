@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og/default.svg",
+        url: "/images/og/default.avif",
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} — Fragrance Reviews, Comparisons & Tools`,
@@ -64,11 +64,12 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     creator: siteConfig.twitterHandle,
-    images: ["/images/og/default.svg"],
+    images: ["/images/og/default.avif"],
   },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/icons/logo.svg", type: "image/svg+xml" },
       { url: "/images/icons/icon-16.png", sizes: "16x16", type: "image/png" },
       { url: "/images/icons/icon-32.png", sizes: "32x32", type: "image/png" },
     ],

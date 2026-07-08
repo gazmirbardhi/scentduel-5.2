@@ -8,6 +8,10 @@ import {
   HelpCircle,
   Sparkles,
   Barcode,
+  Radar,
+  Shirt,
+  Brain,
+  Grid3x3,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -20,11 +24,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = buildMetadata({
   title: "Fragrance Tools",
   description:
-    "Seven free, interactive tools to help you find, compare, and understand fragrances — head-to-head duels, note layering, spray calculators, blind-buy risk, daily trivia, a personality quiz, and a batch-code checker. All run entirely in your browser.",
+    "Eleven free, interactive tools to help you find, compare, and understand fragrances — head-to-head duels, note layering, spray calculators, blind-buy risk, daily trivia, a personality quiz, a batch-code checker, a radar chart, a wardrobe builder, a scent memory game, and a daily bingo challenge. All run entirely in your browser.",
   path: "/tools",
 });
 
@@ -33,6 +38,8 @@ interface ToolDef {
   href: string;
   description: string;
   icon: LucideIcon;
+  /** Optional badge label (e.g. "New!"). */
+  badge?: string;
 }
 
 const tools: ToolDef[] = [
@@ -42,6 +49,13 @@ const tools: ToolDef[] = [
     description:
       "Compare two fragrances head-to-head on longevity, sillage, value, and compliments.",
     icon: Swords,
+  },
+  {
+    name: "Fragrance Radar",
+    href: "/tools/fragrance-radar",
+    description:
+      "Overlay two fragrances on a 4-axis radar chart — longevity, sillage, value, compliments.",
+    icon: Radar,
   },
   {
     name: "Scent Matcher",
@@ -62,10 +76,24 @@ const tools: ToolDef[] = [
     icon: AlertTriangle,
   },
   {
+    name: "Wardrobe Builder",
+    href: "/tools/wardrobe-builder",
+    description:
+      "Add your fragrances and see which seasons, occasions, and note families you're missing.",
+    icon: Shirt,
+  },
+  {
     name: "Name That Note",
     href: "/tools/name-that-note",
     description: "Daily fragrance trivia. New question every day.",
     icon: HelpCircle,
+  },
+  {
+    name: "Scent Memory",
+    href: "/tools/scent-memory",
+    description:
+      "Guess the fragrance from its note list. Build a streak, track your accuracy.",
+    icon: Brain,
   },
   {
     name: "Fragrance Personality Quiz",
@@ -80,6 +108,14 @@ const tools: ToolDef[] = [
     description: "Decode fragrance batch codes (demo/educational).",
     icon: Barcode,
   },
+  {
+    name: "Fragrance Bingo",
+    href: "/tools/fragrance-bingo",
+    description:
+      "A new 5×5 bingo card every day. Mark what you've done, get a bingo, share your card.",
+    icon: Grid3x3,
+    badge: "New! Daily game",
+  },
 ];
 
 function buildItemListJsonLd() {
@@ -88,7 +124,7 @@ function buildItemListJsonLd() {
     "@type": "ItemList",
     name: "Fragrance Tools",
     description:
-      "Seven free, interactive tools to help you find, compare, and understand fragrances. All run entirely in your browser.",
+      "Eleven free, interactive tools to help you find, compare, and understand fragrances. All run entirely in your browser.",
     url: abs("/tools"),
     numberOfItems: tools.length,
     itemListElement: tools.map((tool, index) => ({
@@ -118,7 +154,7 @@ export default function ToolsIndexPage() {
           Fragrance Tools
         </h1>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
-          Seven free, interactive tools to help you find, compare, and
+          Eleven free, interactive tools to help you find, compare, and
           understand fragrances. All run entirely in your browser — no account,
           no data sent anywhere.
         </p>
@@ -136,11 +172,18 @@ export default function ToolsIndexPage() {
               className="group flex flex-col transition-shadow hover:shadow-lg"
             >
               <CardHeader>
-                <div
-                  className="mb-3 flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary"
-                  aria-hidden="true"
-                >
-                  <Icon className="h-5 w-5" />
+                <div className="mb-3 flex items-center justify-between">
+                  <div
+                    className="flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary"
+                    aria-hidden="true"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  {tool.badge && (
+                    <Badge className="bg-primary text-primary-foreground">
+                      {tool.badge}
+                    </Badge>
+                  )}
                 </div>
                 <CardTitle className="font-serif text-xl">
                   <Link

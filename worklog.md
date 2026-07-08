@@ -170,3 +170,183 @@ Stage Summary:
   * Unknown slugs render custom 404 (dynamicParams = false)
   * Writer workflow: only touches src/content/posts/*.mdx + git push
 - Content shipped: 3 published posts (1500+ words each), 1 draft, 21 notes, 12 brands, 9 perfumers, 31 fragrances.
+
+---
+Task ID: EXPAND-NOTES
+Agent: full-stack-developer
+Task: Expand notes glossary from 21 to 50+ entries
+
+Work Log:
+- Read /home/z/my-project/worklog.md to understand the project structure (ScentDuel fragrance blog, Next.js 16 + TypeScript, notesData.ts is the canonical ingredient glossary consumed by posts.ts validation and data/fragrances.json).
+- Read src/lib/notesData.ts to understand the existing Note interface, the 21 existing entries (bergamot, neroli, vetiver, cedar, sandalwood, oud, rose, amber, vanilla, tonka, patchouli, lavender, musk, saffron, iris, tobacco, benzoin, cinnamon, leather, violet, almond), and the existing family union: "Citrus" | "Floral" | "Woody" | "Amber" | "Gourmand" | "Aromatic" | "Musky" | "Spicy" | "Resinous".
+- Read scripts/check-links.ts to understand exactly how relatedNotes cross-references are validated (every note.relatedNotes[i] must be in noteSlugs).
+- Planned 34 new entries spanning 9 olfactive families (Florals, Spices, Resins/Mosses, Woods, Citrus, Gourmand, Green/Aromatic, Fruity, Aquatic, Synthetics, Animalic), aiming for 21+34 = 55 total (within the 52-55 target).
+- Extended the Note.family union to add "Green" | "Fruity" | "Aquatic" (required for fig/violet-leaf, black-currant/peach, and sea-salt).
+- Used MultiEdit with two edits: (1) extend the family union, (2) insert 34 new entries immediately after the existing almond entry and before the closing `];`.
+- Wrote genuinely informative descriptions for each note: covered botanical/material source, extraction method, key odorants (eugenol for clove, gamma-undecalactone for peach, civetone for civet, buchu leaf for black-currant, etc.), scent profile, role in perfumery, named example fragrances (Fracas, Philosykos, Santal 33, Mitsouko, Angel, Cuir de Russie, Molecule 01, etc.), and notable facts (IFRA restrictions, ethical considerations, dose-sensitivity).
+- Carefully verified every relatedNotes reference resolves to an existing slug (either original 21 or one of the 34 new). Cross-references between new entries (e.g. jasmine → tuberose, frankincense → myrrh, ambroxan ↔ iso-e-super, civet → ambergris) were pre-planned in a checklist before writing.
+- Ran `bun run lint` — clean, no errors.
+- Ran `bun scripts/check-links.ts` — "✓ check-links: 0 broken cross-links. Verified 3 posts, 55 notes, 12 brands, 9 perfumers, 31 fragrances, 13 categories."
+
+Stage Summary:
+- Final total: 55 notes (21 original + 34 new). Target 52-55 met.
+- New slugs added (34): jasmine, ylang-ylang, tuberose, orange-blossom, geranium, osmanthus, magnolia (florals — 7); pink-pepper, cardamom, clove (spices — 3); oakmoss, labdanum, frankincense, myrrh (resins/mosses — 4); guaiac-wood, juniper, birch (woods/aromatics — 3); grapefruit, lemon, mandarin (citrus — 3); dark-chocolate, coffee, honey (gourmand — 3); fig, mint, rosemary (green/aromatic — 3); violet-leaf (green — 1); black-currant, peach (fruity — 2); sea-salt (aquatic — 1); ambroxan, iso-e-super (modern synthetics — 2); civet, ambergris (animalic — 2).
+- Family union extended: "Green" | "Fruity" | "Aquatic" added to the Note interface.
+- Note interface, noteSlugs, getNote(), getNotesBySlugs() unchanged.
+- All 21 original entries preserved verbatim.
+- All 34 new relatedNotes arrays validated against noteSlugs (0 broken links).
+- Lint clean. check-links clean.
+
+---
+Task ID: EXPAND-PERFUMES
+Agent: full-stack-developer
+Task: Expand fragrances.json from 31 to 50+ entries
+
+Work Log:
+- Read worklog.md and existing src/data/fragrances.json (31 entries, well-formed).
+- Audited src/lib/brandsData.ts (12 brand slugs), src/lib/perfumersData.ts (9 perfumer slugs), src/lib/notesData.ts (55 note slugs) to verify allowed ID space.
+- Read scripts/check-links.ts to understand the validation contract (fragrances.json → brandSlug / perfumerSlug / noteSlugs must all resolve to existing IDs).
+- Designed 27 new entries (target was 19+) spanning all 12 brands and 9 perfumers for broad directory coverage. Each entry uses 5 note slugs from the 55 allowed, with realistic longevity/sillage/value/compliment scores and accurate release years + concentrations.
+- Inserted the 27 new entries inside the existing JSON array (immediately before the closing `]`) via a single Edit on the unique tail block of the last existing entry.
+- Validated JSON parses cleanly: 58 total entries, 0 duplicate slugs.
+- Extended scripts/gen-images.sh with 27 new gen_frag() calls (one per new slug) so the public/images/fragrances/*.svg placeholders match the JSON image paths.
+- Re-ran scripts/gen-images.sh: 58 fragrance SVGs now present (was 31).
+- Ran final verification:
+  - `bun run lint` → clean (no ESLint errors).
+  - `bun scripts/check-links.ts` → "✓ check-links: 0 broken cross-links. Verified 3 posts, 55 notes, 12 brands, 9 perfumers, 58 fragrances, 13 categories."
+- Checked dev.log tail: dev server still serving `/` and blog routes with HTTP 200, no errors.
+
+Stage Summary:
+- fragrances.json grew from 31 → 58 entries (+27 new, exceeding the 19+ requirement).
+- New slugs added (27):
+  1. creed-original-santal
+  2. creed-royal-oud
+  3. tom-ford-beau-de-jour
+  4. tom-ford-lost-cherry
+  5. tom-ford-fucking-fabulous
+  6. tom-ford-mandarino-di-amalfi
+  7. dior-homme-original
+  8. dior-homme-sport
+  9. dior-oud-ispahan
+  10. chanel-allure-homme-sport
+  11. chanel-egoiste
+  12. chanel-pour-monsieur
+  13. guerlain-shalimar
+  14. guerlain-linstant-pour-homme
+  15. hermes-un-jardin-sur-le-nil
+  16. hermes-terre-eau-glacee
+  17. mfk-aqua-celestia
+  18. mfk-aqua-vitae
+  19. parfums-de-marly-pegasus
+  20. parfums-de-marly-carlisle
+  21. parfums-de-marly-greenley
+  22. ysl-kouros
+  23. ysl-libre
+  24. versace-eros-flame
+  25. armaf-tres-nuit
+  26. armaf-aura-fresh
+  27. jpg-scandal-pour-homme
+- All 27 entries pass check-links: every brandSlug, perfumerSlug, and noteSlug resolves to a real entry.
+- All 27 corresponding SVG placeholder images generated under public/images/fragrances/.
+- Lint passes clean. Dev server returns 200 on /.
+
+---
+Task ID: WRITE-ARTICLES
+Agent: full-stack-developer
+Task: Write 4 review articles + 4 comparison articles (1500+ words each)
+
+Work Log:
+- Read /home/z/my-project/worklog.md to understand project structure and prior agents' work.
+- Inspected existing post format (dior-sauvage-edp-review.mdx, bleu-de-chanel-edp-review.mdx, bleu-vs-sauvage-comparison.mdx) and the frontmatter Zod schema in src/lib/posts.ts to match conventions exactly.
+- Verified available note slugs (55), brand slugs (12), perfumer slugs (9), and category slugs against the canonical data files in src/lib/.
+- Wrote 4 review articles (category: "reviews"):
+  1. creed-aventus-review.mdx — Creed Aventus after 15 years (1672 words)
+  2. tom-ford-oud-wood-review.mdx — Tom Ford Oud Wood as the gateway oud (1767 words)
+  3. baccarat-rouge-540-review.mdx — BR540 saffron-amber phenomenon (1970 words)
+  4. terre-dhermes-review.mdx — Terre d'Hermès as Ellena's minimalist masterpiece (1881 words)
+- Wrote 4 comparison articles (category: "comparisons"):
+  5. creed-aventus-vs-armaf-club-de-nuit.mdx — Aventus vs. CDNIM clone question (2015 words)
+  6. sauvage-edp-vs-elixir.mdx — Dior Sauvage EDP vs. Elixir concentration showdown (1752 words)
+  7. bleu-de-chanel-vs-terre-dhermes.mdx — Office fragrance showdown (1917 words)
+  8. tom-ford-vs-mfk-oud.mdx — West vs. East oud approach comparison (2265 words)
+- Every article follows the required structure: intro hook, Scent Profile section with note-breakdown TABLE, Performance bullets, Value section, How to Wear It bullets, 4-5 FAQ entries as h3 headings, Verdict section with numeric rating breakdown TABLE, and affiliate disclosure line at the end.
+- Comparison articles additionally include head-to-head comparison TABLES for scent, performance, value, versatility, and a final winner-by-use-case table plus a Deal Finder table.
+- All frontmatter fields validated: title, excerpt (20+ chars), publishDate (spread 2024-11-05 through 2024-12-08), author, category, tags, featuredImage (all .avif), featuredImageAlt (10+ chars), relatedNotes/relatedBrands/relatedPerfumers (all slugs verified against data sources). No draft flag, no canonicalUrl override.
+- publishDate distribution: 2024-11-05, 2024-11-12, 2024-11-18, 2024-11-22, 2024-11-25, 2024-11-28, 2024-12-02, 2024-12-08 — all within the 2024-11-01 to 2024-12-15 window.
+- Ran verification:
+  - `bun run lint` — passed clean (no ESLint warnings/errors).
+  - `bun scripts/check-links.ts` — passed: "0 broken cross-links. Verified 11 posts, 55 notes, 12 brands, 9 perfumers, 58 fragrances, 13 categories."
+  - Programmatically invoked getAllPosts() via bun to confirm Zod validation passes for every new MDX file (all 8 parsed without throwing).
+
+Stage Summary:
+- creed-aventus-review.mdx (review, 1672 words)
+- tom-ford-oud-wood-review.mdx (review, 1767 words)
+- baccarat-rouge-540-review.mdx (review, 1970 words)
+- terre-dhermes-review.mdx (review, 1881 words)
+- creed-aventus-vs-armaf-club-de-nuit.mdx (comparison, 2015 words)
+- sauvage-edp-vs-elixir.mdx (comparison, 1752 words)
+- bleu-de-chanel-vs-terre-dhermes.mdx (comparison, 1917 words)
+- tom-ford-vs-mfk-oud.mdx (comparison, 2265 words)
+
+---
+Task ID: NEW-TOOLS-GAME
+Agent: full-stack-developer
+Task: Build 3 new tools + 1 viral game (Fragrance Radar, Wardrobe Builder, Scent Memory, Fragrance Bingo)
+
+Work Log:
+- Read /home/z/my-project/worklog.md to confirm prior work (58 fragrances, 55 notes, 12 brands, 9 perfumers, 7 existing tools at /tools/*, `buildMetadata`/`buildBreadcrumbJsonLd`/`abs` helpers in `@/lib/seo`, `Breadcrumbs` layout component, `getNote`/`getNotesBySlugs`/`noteSlugs` exports in `@/lib/notesData`, `getBrand` in `@/lib/brandsData`, sonner toast at `import { toast } from "sonner"`).
+- Inspected existing tool components (ScentDueler, ScentMatcher, NameThatNote) to match the warm amber/wood theme conventions: `"use client"` directive, `Card`/`CardContent`/`CardHeader`/`CardTitle`/`CardDescription` shadcn primitives, semantic Tailwind classes only (bg-primary/text-primary/bg-muted/border-border/text-muted-foreground), no indigo/blue.
+- Created agent-ctx directory at `/home/z/my-project/agent-ctx/` with work record file `NEW-TOOLS-GAME-full-stack-developer.md`.
+- Built `src/components/tools/FragranceRadar.tsx` ("use client"): two `<Select>` dropdowns for fragrance A/B; hand-built SVG radar chart with 4 axes (Longevity normalized as longevityHours/12*10, Sillage, Value, Compliment Factor all 1-10); 5 concentric grid polygons + 4 spokes + axis labels + scale labels; two overlapping polygons with `fillOpacity` 0.18/0.22 and strokes; vertex dots; legend with color swatches + avg-score badges; raw-numbers comparison table with winner highlighting per axis; viewBox 440x440 with `width="100%"` and `max-w-xl`; default to first two fragrances.
+- Built `src/components/tools/WardrobeBuilder.tsx` ("use client"): search-and-add pattern with brand filter; selected fragrances shown as Badge chips with X remove buttons; toggleable list rows with CheckCircle2/Circle icons + note names + season/occasion metadata; localStorage persistence at key `scentduel-wardrobe` with hydration guard (`hydrated` flag + try/catch around JSON.parse); live analysis computing season coverage (Spring/Summer/Fall/Winter via parsing bestSeason), occasion coverage (Office/Date night/Night out/Special occasion via substring matching of bestOccasion, with Versatile→Office), note family diversity (12 families: Citrus/Floral/Woody/Amber/Gourmand/Aromatic/Musky/Spicy/Resinous/Green/Fruity/Aquatic via getNote(f.noteSlugs).family); 3 gap recommendations scored by missing seasons × 2 + missing occasions × 2 + missing families, with reasons listed.
+- Built `src/components/tools/ScentMemory.tsx` ("use client"): random question generator (`makeQuestion`) picks an answer from ELIGIBLE fragrances (≥4 note slugs), 3 distractors from different brands, shuffled; shows the answer's noteSlugs (mapped to names via getNote) as Badge chips; 4 button options with correct/wrong color states (emerald/red/amber); reveals full fragrance info (brand/concentration/year/season/occasion) on answer; score bar with 4 stats (Answered/Correct/Streak/Accuracy); `mounted` flag + useEffect initialization to avoid SSR/CSR Math.random mismatch; "Next question" button + "Reset score" button; streak callout at 3+ correct; Progress bar showing accuracy.
+- Built `src/components/tools/FragranceBingo.tsx` ("use client", the viral game): 44-item experiences pool (relatable fragrance community items per spec + 4 extras); deterministic daily card via `mulberry32` PRNG seeded by `hashString(utcDateString)`; 25-cell grid (5×5) with FREE center (🎁 emoji, can't be toggled); `mounted` flag pattern + useEffect loads persisted marks from `localStorage` key `scentduel-bingo-YYYY-MM-DD`; toggle cells with state; win detection across all 12 winning lines (5 rows, 5 cols, 2 diagonals); CSS confetti animation (36 amber/orange/yellow pieces, `<style>` injected keyframes `bingo-confetti-fall`, falling + rotating + fading, 6s duration, pointer-events-none overlay); "BINGO!" banner with line count; toast via sonner on first win; status tiles (squares marked, bingos completed, status); share button generates text representation (5×5 emoji grid ✅/⬜/🎁 + Day N + date + line count + URL CTA) and copies via `navigator.clipboard.writeText`, with success toast "Copied to clipboard!"; reset card button; Day X (UTC day-of-year) + human-readable date at top; winning cells highlighted with `ring-2 ring-primary`.
+- Fixed one a11y warning: changed `aria-pressed` → `aria-selected` on bingo gridcell buttons (gridcell role supports aria-selected, not aria-pressed).
+- Built 4 server-component route pages under `src/app/tools/{fragrance-radar,wardrobe-builder,scent-memory,fragrance-bingo}/page.tsx`, each with: `buildMetadata({ title, description, path })`, Breadcrumbs Home/Tools/{Tool Name}, h1 + intro paragraph, `<div className="mt-8">` wrapper around the tool, WebApplication JSON-LD (with `applicationCategory` of "Utility" for radar/wardrobe, "Game" for scent-memory/bingo) + BreadcrumbList JSON-LD via `dangerouslySetInnerHTML`. Bingo page intro mentions UTC-shared-card concept ("did anyone else get bingo today?").
+- Updated `src/app/tools/page.tsx` to list 11 tools (7 existing + 4 new) with icons (Swords, Radar, Layers, Calculator, AlertTriangle, Shirt, HelpCircle, Brain, Sparkles, Barcode, Grid3x3); added `badge?: string` field to ToolDef interface; Fragrance Bingo card gets a primary-colored "New! Daily game" Badge; updated ItemList JSON-LD `numberOfItems` to 11 with all 11 entries.
+- Ran `bun run lint` → 0 errors, 0 warnings.
+- Verified all 5 routes return HTTP 200 against the running dev server: `/tools` (200), `/tools/fragrance-radar` (200), `/tools/wardrobe-builder` (200), `/tools/scent-memory` (200), `/tools/fragrance-bingo` (200).
+- Verified server-rendered HTML: radar chart emits SVG `<polygon>` + axis labels (Longevity/Sillage/Value/Compliment); bingo/scent-memory show "Loading today's..." placeholders (intentional — `mounted` flag avoids SSR/CSR hydration mismatches from Math.random/Date usage); wardrobe-builder shows full search UI server-side.
+- Verified ItemList JSON-LD on /tools now reports `"numberOfItems":11` with 11 `"position"` entries 1-11.
+
+Stage Summary:
+- 4 new client tool components delivered:
+  * `src/components/tools/FragranceRadar.tsx` — SVG radar/spider chart, two-fragrance overlay, comparison table
+  * `src/components/tools/WardrobeBuilder.tsx` — multi-select wardrobe + season/occasion/family gap analysis + localStorage persistence + recommendations
+  * `src/components/tools/ScentMemory.tsx` — note-list guessing game with streak/score tracking, replayable
+  * `src/components/tools/FragranceBingo.tsx` — daily seeded 5×5 bingo card with confetti, share-to-clipboard, win detection across 12 lines, date-keyed localStorage
+- 4 new server-component route pages: `src/app/tools/fragrance-radar/page.tsx`, `src/app/tools/wardrobe-builder/page.tsx`, `src/app/tools/scent-memory/page.tsx`, `src/app/tools/fragrance-bingo/page.tsx` — each with breadcrumbs, h1 + intro, WebApplication + BreadcrumbList JSON-LD.
+- 1 updated page: `src/app/tools/page.tsx` now lists 11 tools (7 + 4 new) with appropriate lucide icons, Fragrance Bingo highlighted with "New! Daily game" badge, ItemList JSON-LD updated to 11 items.
+- Warm amber/wood theme preserved throughout (no indigo/blue). TypeScript strict, no `any`, no TODOs. All components responsive (mobile-first grid layouts, sm:/lg: breakpoints). Semantic HTML + aria-labels throughout. `bun run lint` clean. All 5 routes verified 200.
+
+---
+Task ID: EXPANSION-FINAL
+Agent: main (orchestrator)
+Task: All expansion work — fix tables/lists, new logo, AVIF images, 8 articles, 55 notes, 58 fragrances, 3 tools + 1 game
+
+Work Log:
+- Fixed post-content.tsx: added remark-gfm for GFM table support, added explicit ul/ol/li components with list-disc/list-decimal and marker styling (was being overridden to display:flex/list-style:none by Tailwind preflight on breadcrumb li). Switched table rendering from shadcn Table primitives to plain <table> with Tailwind classes wrapped in overflow-x-auto. Verified: 2 tables + 7 uls now render with disc bullets.
+- Redesigned logo: new SVG at public/images/icons/logo.svg — amber-gradient bottle with gold atomizer, scent trail, "SD" monogram, dark rounded background. Regenerated all 6 PNG icons + favicon.ico from it. Updated header.tsx and footer.tsx to use the new logo.
+- Converted all images to AVIF: 58 fragrance images, 12 post hero images, 1 OG image, 1 author avatar — all .avif (quality 60-65, ~50% smaller than equivalent WebP).
+- Generated 12 new blog post hero images (1600x900 wide banners with bottle silhouette, title, subtitle, accent color).
+- Updated all 12 post frontmatter featuredImage paths to .avif.
+- Updated layout.tsx metadata to reference AVIF OG images and the new SVG logo in icons.
+- Upgraded blog post hero image to a full-width banner (figure element, 16:9, sr-only figcaption).
+- Expanded notes glossary: 21 → 55 entries (added 34 new notes across florals, spices, resins, woods, citrus, gourmand, green, fruity, aquatic, synthetics, animalic).
+- Expanded fragrances database: 31 → 58 entries (added 27 new fragrances from existing brands/perfumers).
+- Wrote 8 new articles (4 reviews + 4 comparisons), each 1500+ words, with tables, lists, FAQ, verdicts.
+- Built 3 new tools: Fragrance Radar (SVG spider chart), Wardrobe Builder (collection gap analysis), Scent Memory (guess-the-fragrance game).
+- Built 1 viral game: Fragrance Bingo — daily 5x5 card, deterministic by UTC date, shareable emoji grid, confetti on win.
+- Updated tools index page to show all 11 tools, with bingo highlighted as "New! Daily game".
+- Updated sitemap (seo.ts) to include the 4 new tool routes.
+- Updated existing 3 posts' featuredImage to .avif.
+
+Stage Summary:
+- Lint: 0 errors, 0 warnings.
+- check-links: 0 broken cross-links (11 posts, 55 notes, 12 brands, 9 perfumers, 58 fragrances, 13 categories).
+- All routes return 200; unknown slugs return 404.
+- Tables and bullet lists now render correctly in all blog posts.
+- All images use AVIF format.
+- New logo + favicon deployed.
+- 4 new tools + 1 viral game all functional (verified via Agent Browser: bingo triggers win + share, radar renders polygons, wardrobe builder searches, scent memory shows 4 options).
+- Homepage now shows: 11 articles · 55 notes · 12 brands · 9 perfumers · 58 fragrances.

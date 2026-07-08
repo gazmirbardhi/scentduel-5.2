@@ -120,6 +120,10 @@ export function getAllSitemapEntries(): SitemapEntry[] {
     "/tools/name-that-note",
     "/tools/fragrance-quiz",
     "/tools/batch-checker",
+    "/tools/fragrance-radar",
+    "/tools/wardrobe-builder",
+    "/tools/scent-memory",
+    "/tools/fragrance-bingo",
   ];
   for (const t of toolPages) {
     entries.push({

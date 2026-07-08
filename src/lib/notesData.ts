@@ -24,7 +24,10 @@ export interface Note {
     | "Aromatic"
     | "Musky"
     | "Spicy"
-    | "Resinous";
+    | "Resinous"
+    | "Green"
+    | "Fruity"
+    | "Aquatic";
   longevity: "Short" | "Moderate" | "Long" | "Very Long";
   typicalUse: string;
   relatedNotes: string[];
@@ -324,6 +327,482 @@ export const notes: Note[] = [
     typicalUse:
       "Heart note in gourmands, cherry-amber compositions, and 'marzipan' florals; pairs with vanilla and tonka.",
     relatedNotes: ["tonka", "vanilla", "amber", "cinnamon"],
+  },
+  {
+    slug: "jasmine",
+    name: "Jasmine",
+    summary:
+      "The king of florals — sweet, indolic, and animalic. Picked at night and a pillar of every white-floral composition.",
+    description:
+      "Jasmine is the most-used floral in perfumery after rose, and the defining heart of the white-floral family. Two varieties dominate: Jasminum grandiflorum (grown in Grasse and Egypt, softer and sweeter) and Jasminum sambac (grown in India, greener and more indolic). The flowers must be picked before sunrise and processed immediately — it takes roughly 7 million blossoms to produce 1 kg of absolute. Jasmine's signature is its indole: an animalic, slightly fecal molecule that gives the flower its sensual, fleshy depth.",
+    scentProfile: "Floral, sweet, indolic, animalic, slightly green",
+    family: "Floral",
+    longevity: "Moderate",
+    typicalUse:
+      "Heart note in white florals, orientals, and almost every feminine composition; pairs with rose, tuberose, and neroli.",
+    relatedNotes: ["rose", "tuberose", "neroli", "ylang-ylang"],
+  },
+  {
+    slug: "ylang-ylang",
+    name: "Ylang-Ylang",
+    summary:
+      "Tropical, banana-like, and intensely sweet — the sensual heart of oriental florals and the complement to jasmine.",
+    description:
+      "Ylang-ylang (Cananga odorata) is a tropical flower native to Southeast Asia, steam-distilled in fractions — 'extra', grades I, II, and III — with the first fraction (ylang-ylang extra) the most prized. It smells of ripe banana, jasmine, and creamy custard, with a slightly medicinal camphoraceous edge. Ylang-ylang is the bridge between white florals and orientals: it adds tropical sweetness without fruitiness, and it's the defining note in Chanel No. 5 and Jean Paul Gaultier Classique.",
+    scentProfile: "Floral, sweet, creamy, banana-like, slightly medicinal",
+    family: "Floral",
+    longevity: "Long",
+    typicalUse:
+      "Heart note in orientals, white florals, and tropical compositions; pairs with jasmine, tuberose, and vanilla.",
+    relatedNotes: ["jasmine", "tuberose", "vanilla", "bergamot"],
+  },
+  {
+    slug: "tuberose",
+    name: "Tuberose",
+    summary:
+      "Creamy, narcotic, and almost dangerously sweet — the most powerful white floral and the soul of Fracas.",
+    description:
+      "Tuberose (Polianthes tuberosa) is a Mexican flower now grown primarily in India. Its absolute is one of the most expensive in perfumery and smells of creamy gardenia, butter, and a distinctly indolic, almost rotting-sweet richness. Tuberose is the defining note of the white-floral genre at its most opulent — Robert Piguet Fracas, Frederic Malle Carnal Flower, and Le Labo Tubereuse 40 all rest on it. It's a dose-sensitive note: at low levels it's bridal, at high levels it's operatic.",
+    scentProfile: "Creamy, sweet, indolic, buttery, narcotic",
+    family: "Floral",
+    longevity: "Long",
+    typicalUse:
+      "Heart note in white florals, orientals, and bold feminine compositions; pairs with jasmine and ylang-ylang.",
+    relatedNotes: ["jasmine", "ylang-ylang", "orange-blossom", "neroli"],
+  },
+  {
+    slug: "orange-blossom",
+    name: "Orange Blossom",
+    summary:
+      "Neroli's sweeter, more indolic cousin — bright, honeyed, and the soul of bridal and Middle Eastern fragrances.",
+    description:
+      "Orange blossom absolute is solvent-extracted from the same bitter-orange flowers that produce neroli (steam-distilled) and petitgrain (leaf-distilled). The absolute is greener, sweeter, and more indolic than neroli, with a hay-like, almost tuberose-adjacent richness. It's the defining note of Middle Eastern bridal perfumery and the heart of Jean Paul Gaultier Scandal, Perris Mondiale, and many Lush and Jo Malone compositions. Orange blossom is also the natural source of methyl anthranilate, which gives many florals their 'orange flower' character.",
+    scentProfile: "Floral, sweet, honeyed, slightly green and indolic",
+    family: "Floral",
+    longevity: "Moderate",
+    typicalUse:
+      "Heart note in white florals, bridal fragrances, and Middle Eastern compositions; pairs with neroli, jasmine, and citrus.",
+    relatedNotes: ["neroli", "jasmine", "bergamot", "tuberose"],
+  },
+  {
+    slug: "geranium",
+    name: "Geranium",
+    summary:
+      "Rosy, minty, and slightly green — the perfumer's bridge between floral heart and aromatic top.",
+    description:
+      "Geranium in perfumery is almost always Pelargonium graveolens, a leafy plant whose essential oil smells of rose, mint, and lemon — like rose distilled through fresh leaves. It's the perfumer's secret weapon in masculine fougères (where it softens lavender and oakmoss), in chypres (where it bridges bergamot and patchouli), and in 'masculine rose' compositions where it gives rosy depth without sweetness. Bourbon geranium (from Réunion) is the perfumery benchmark; Egyptian and Chinese are the workhorses.",
+    scentProfile: "Rosy, minty, green, slightly lemony",
+    family: "Floral",
+    longevity: "Moderate",
+    typicalUse:
+      "Heart note in fougères, chypres, and masculine rose compositions; pairs with lavender, patchouli, and bergamot.",
+    relatedNotes: ["lavender", "bergamot", "patchouli", "rose"],
+  },
+  {
+    slug: "osmanthus",
+    name: "Osmanthus",
+    summary:
+      "Apricot, leather, and tea — the rare floral that reads as both fruity and animalic, and a perfumery favorite since 2000.",
+    description:
+      "Osmanthus is a Chinese flower whose absolute smells of ripe apricot, peach skin, and a leathery, suede-like undertone — a uniquely 'fruity-leathery' floral. It's become a perfumery darling since Jean-Claude Ellena championed it at Hermès (the Osmanthe Yunnan series), and it appears in Ormonde Jayne Osmanthus, Armani Privé Osmanthe, and many niche compositions. Osmanthus is also the source of beta-damascenone, a key odorant in rose and many fruits.",
+    scentProfile: "Apricot, peach-skin, leathery, tea-like, floral",
+    family: "Floral",
+    longevity: "Moderate",
+    typicalUse:
+      "Heart note in fruity florals, tea compositions, and niche florals; pairs with peach, jasmine, and bergamot.",
+    relatedNotes: ["jasmine", "peach", "bergamot", "rose"],
+  },
+  {
+    slug: "magnolia",
+    name: "Magnolia",
+    summary:
+      "Lemony, creamy, and slightly spicy — the bridge between white florals and citrus, with a velvet-petal richness.",
+    description:
+      "Magnolia is a large-petaled flower whose scent sits between lemon, neroli, and tuberose — bright on top, creamy underneath, with a faintly spicy clove-like edge. It's rarely used as a natural absolute (expensive and unstable) and more often reconstructed as an accord of neroli, ylang-ylang, and ionones. Magnolia is the heart of Jo Malone Magnolia & Lily, Hermès Hermessence Muguet Porcelaine (adjacent), and several niche bridal compositions.",
+    scentProfile: "Lemony, creamy, floral, slightly spicy",
+    family: "Floral",
+    longevity: "Moderate",
+    typicalUse:
+      "Heart note in soft florals, bridal compositions, and spring scents; pairs with neroli, ylang-ylang, and bergamot.",
+    relatedNotes: ["neroli", "ylang-ylang", "bergamot", "jasmine"],
+  },
+  {
+    slug: "pink-pepper",
+    name: "Pink Pepper",
+    summary:
+      "Bright, rosy, and slightly resinous — the modern spice that opens half of all niche fragrances launched since 2010.",
+    description:
+      "Pink pepper (or Schinus molle) is not true pepper but the dried berry of the Peruvian peppertree. Its essential oil smells of bright, rosy, slightly resinous spice — closer to a floral-spicy note than a kitchen spice. Pink pepper has become the default 'modern' opening in niche perfumery: it's in Le Labo Santal 33, Byredo Gypsy Water, and dozens of perfumers' top notes since 2010. It pairs cleanly with citrus, woods, and rose without the heat of black pepper.",
+    scentProfile: "Bright, rosy, resinous, slightly spicy",
+    family: "Spicy",
+    longevity: "Moderate",
+    typicalUse:
+      "Top note in niche compositions, modern florals, and woody blends; pairs with bergamot, cedar, and rose.",
+    relatedNotes: ["bergamot", "cedar", "rose", "cardamom"],
+  },
+  {
+    slug: "cardamom",
+    name: "Cardamom",
+    summary:
+      "Sweet, aromatic, and slightly camphoraceous — the most 'perfumery' of the baking spices and the heart of oriental openings.",
+    description:
+      "Cardamom is the seed pod of Elettaria cardamomum, steam-distilled into an oil that smells of warm, sweet spice with a camphoraceous, almost eucalyptus edge. It's the most common 'spicy top' in oriental perfumery — the opening of Tom Ford Noir, Parfums de Marly Layton, and Penhaligon's Sartorial all rest on it. Cardamom is dose-sensitive: at low levels it's aromatic and clean, at high levels it's medicinal and curry-like.",
+    scentProfile: "Sweet, aromatic, warm, slightly camphoraceous",
+    family: "Spicy",
+    longevity: "Moderate",
+    typicalUse:
+      "Top-to-heart note in orientals, fougères, and gourmands; pairs with vanilla, amber, and sandalwood.",
+    relatedNotes: ["vanilla", "amber", "sandalwood", "bergamot"],
+  },
+  {
+    slug: "clove",
+    name: "Clove",
+    summary:
+      "Hot, sweet, and dental-medicated — the most phenolic of the baking spices and the soul of carnation accords.",
+    description:
+      "Clove (steam-distilled from Syzygium aromaticum buds) is dominated by eugenol — the same molecule that defines carnation, cinnamon leaf, and many 'dental' aromas. It's hot, sweet, and almost burning in concentration, and it's the structural backbone of every carnation accord (carnation is essentially clove + rose + ionone). Clove is also a fixative: it extends florals and gives them 'clove-carnation' depth. It's the heart of Paco Rabanne Calandre, many classic chypres, and the spicy opening of Opium.",
+    scentProfile: "Hot, sweet, phenolic, slightly woody",
+    family: "Spicy",
+    longevity: "Long",
+    typicalUse:
+      "Heart note in carnation accords, spicy orientals, and chypres; pairs with rose, patchouli, and cinnamon.",
+    relatedNotes: ["rose", "patchouli", "cinnamon", "geranium"],
+  },
+  {
+    slug: "oakmoss",
+    name: "Oakmoss",
+    summary:
+      "Damp forest, leather, and seaweed — the base of every classical chypre and the most regulated material in modern perfumery.",
+    description:
+      "Oakmoss is a lichen (Evernia prunastri) that grows on oak bark, extracted into a resin that smells of damp forest, leather, and a briny, iodine-like richness. It's the defining base note of the chypre family — Mitsouko, Yvresse, and Aromatics Elixir all rest on it. Oakmoss has been heavily restricted by IFRA due to allergenic atranorin and chloroatranorin, and modern 'oakmoss' is often treemoss, evernyl, or synthetic reconstructions. The regulation is why modern chypres smell softer and less 'wet-leather' than the classics.",
+    scentProfile: "Damp, leathery, forest-floor, slightly briny",
+    family: "Resinous",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note in chypres, fougères, and leather compositions; pairs with patchouli, bergamot, and labdanum.",
+    relatedNotes: ["patchouli", "bergamot", "labdanum", "leather"],
+  },
+  {
+    slug: "labdanum",
+    name: "Labdanum",
+    summary:
+      "Amber, leather, and incense — the sticky cistus resin that's the real backbone of every 'amber' accord.",
+    description:
+      "Labdanum is the resin of the Cistus (rockrose) shrub, native to the Mediterranean. Historically harvested by combing the beards of goats that grazed on the shrubs, today it's solvent-extracted. Labdanum smells of warm amber, leather, and a smoky incense — and it's the structural backbone of every 'amber' accord (alongside benzoin and vanilla). It's also the source of ambrein, a key precursor to ambergris-like notes. Labdanum is the reason 'amber' fragrances have depth rather than just sweetness.",
+    scentProfile: "Amber, leathery, smoky, balsamic",
+    family: "Resinous",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note in ambers, chypres, and orientals; the structural backbone of the amber accord.",
+    relatedNotes: ["amber", "benzoin", "oakmoss", "patchouli"],
+  },
+  {
+    slug: "frankincense",
+    name: "Frankincense (Olibanum)",
+    summary:
+      "Resinous, lemony, and church-smoky — the original incense and the soul of the oriental-resinous family.",
+    description:
+      "Frankincense (or olibanum) is the resin of Boswellia trees, primarily grown in Oman, Somalia, and Yemen. Steam-distilled, it smells of lemon-peel, pine, and church incense — the same material burned in religious ceremonies for millennia. In perfumery it's the defining note of the 'incense oriental' subfamily: Amouage Jubilation XXV, Comme des Garçons Avignon, and Chanel Coromandel all rest on it. The best frankincense (Boswellia sacra from Oman's Dhofar region) is resinous and slightly fruity; Somali is sharper and more lemony.",
+    scentProfile: "Resinous, lemony, smoky, slightly piney",
+    family: "Resinous",
+    longevity: "Long",
+    typicalUse:
+      "Heart-to-base note in incense compositions, orientals, and liturgical-style fragrances; pairs with myrrh and amber.",
+    relatedNotes: ["amber", "myrrh", "cedar", "saffron"],
+  },
+  {
+    slug: "myrrh",
+    name: "Myrrh",
+    summary:
+      "Bitter, medicinal, and warm-balsamic — frankincense's darker, more somber partner and a fixative for ambers.",
+    description:
+      "Myrrh is the resin of Commiphora trees, native to Arabia and East Africa, and like frankincense it has been used in religious and medicinal contexts for thousands of years. In perfumery it smells of warm balsam, bitter medicine, and a faint licorice-like sweetness — darker and more 'somber' than frankincense. Myrrh is used as a base note and fixative in ambers, incense compositions, and orientals, where it adds depth without sweetness. It's the heart of Amouage Interlude and a fixture in many Middle Eastern attars.",
+    scentProfile: "Bitter, balsamic, medicinal, warm, slightly licorice",
+    family: "Resinous",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note in ambers, incense compositions, and orientals; pairs with frankincense, amber, and labdanum.",
+    relatedNotes: ["frankincense", "amber", "labdanum", "benzoin"],
+  },
+  {
+    slug: "guaiac-wood",
+    name: "Guaiac Wood",
+    summary:
+      "Smoky, rose-like, and slightly tea-leaf — the softest of the woods and the soul of 'smoky rose' compositions.",
+    description:
+      "Guaiac wood (Bulnesia sarmientoi, also spelled guaiacwood or guayacan) is steam-distilled from the heartwood of a South American tree. The oil smells of soft smoke, rose, and a faint tea-leaf sweetness — it's the 'rosy smoke' note behind many leather and rose compositions. Guaiac wood is also a mild natural source of guaiol, which gives it a 'soft' woody character distinct from cedar's dryness or sandalwood's creaminess. It's in Le Labo Rose 31, Tom Ford Oud Wood, and many masculine 'smoky woods.'",
+    scentProfile: "Smoky, rose-like, soft woody, slightly tea-leaf",
+    family: "Woody",
+    longevity: "Long",
+    typicalUse:
+      "Heart-to-base note in smoky woods, rose compositions, and leathers; pairs with cedar, rose, and vetiver.",
+    relatedNotes: ["cedar", "rose", "vetiver", "birch"],
+  },
+  {
+    slug: "juniper",
+    name: "Juniper (Berry)",
+    summary:
+      "Crisp, gin-like, and resinous — the soul of gin and the defining aromatic of masculine colognes.",
+    description:
+      "Juniper in perfumery usually means juniper berry essential oil, steam-distilled from the blue-black berries of Juniperus communis. It smells of crisp gin, pine, and a peppery resinous edge — unsurprising, since juniper is the defining botanical of gin itself. Juniper is the opening note of most classic 'gin and tonic' fragrances (Penhaligon's Juniper Sling, Commodity Gin) and a fixture of aromatic masculines. It's brighter and more 'alcoholic' than pine or cypress.",
+    scentProfile: "Crisp, gin-like, resinous, slightly peppery",
+    family: "Aromatic",
+    longevity: "Moderate",
+    typicalUse:
+      "Top note in aromatic masculines, gin-tonic compositions, and colognes; pairs with bergamot, vetiver, and cedar.",
+    relatedNotes: ["bergamot", "vetiver", "cedar", "lavender"],
+  },
+  {
+    slug: "birch",
+    name: "Birch (Tar)",
+    summary:
+      "Smoky, tarry, and leathery — the original Russian-leather material and the soul of the leather family.",
+    description:
+      "Birch tar is the dry distillation of birch bark, producing a thick, smoky, tarry oil that smells of campfire, leather, and a faint medicinal sweetness. It's the original 'Russian leather' base note — the material behind Cuir de Russie, Knize Ten, and the leather family's smokiest specimens. Birch tar is now heavily restricted by IFRA (it's a strong sensitizer), and modern leather compositions use it sparingly or substitute with synthetic isobutyl quinoline. Even at trace levels, it's instantly recognizable as 'leather.'",
+    scentProfile: "Smoky, tarry, leathery, slightly medicinal",
+    family: "Woody",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note in leather compositions, smoky woods, and bold orientals; pairs with leather, cedar, and patchouli.",
+    relatedNotes: ["leather", "cedar", "patchouli", "guaiac-wood"],
+  },
+  {
+    slug: "grapefruit",
+    name: "Grapefruit",
+    summary:
+      "Bitter, juicy, and slightly sulfurous — the most 'adult' citrus and the soul of fresh masculines since 2000.",
+    description:
+      "Grapefruit oil is cold-pressed from the rind of Citrus paradisi, and it smells of bitter, juicy citrus with a characteristic faint sulfurous edge (from the mercaptan that gives grapefruit juice its slight 'catty' undertone). It's brighter and more bitter than orange or mandarin, which is why it reads as 'masculine' and 'sporty' — it's the opening of Terre d'Hermès (grapefruit + orange), Dolce & Gabbana Light Blue, and many fresh masculines. Pink grapefruit is softer and less sulfurous than white.",
+    scentProfile: "Bitter, juicy, citrus, slightly sulfurous",
+    family: "Citrus",
+    longevity: "Short",
+    typicalUse:
+      "Top note in fresh masculines, sport fragrances, and colognes; pairs with bergamot, vetiver, and cedar.",
+    relatedNotes: ["bergamot", "vetiver", "cedar", "lemon"],
+  },
+  {
+    slug: "lemon",
+    name: "Lemon",
+    summary:
+      "Sharp, bright, and clean — the most 'functional' citrus and the soul of every household-cleaner association.",
+    description:
+      "Lemon oil is cold-pressed from the rind of Citrus limon, primarily grown in Sicily and California. It smells of sharp, bright, slightly zesty citrus — sharper than bergamot, less complex than yuzu. Lemon is the most-used citrus in functional perfumery (cleaners, candles, soaps) because it reads as 'clean' to almost every culture, which gives it a slight 'dish soap' association in fine perfumery. In fine fragrance it's the opening of 4711, Acqua di Parma Colonia, and almost every classical cologne.",
+    scentProfile: "Sharp, bright, zesty, clean citrus",
+    family: "Citrus",
+    longevity: "Short",
+    typicalUse:
+      "Top note in colognes, fresh compositions, and functional fragrances; pairs with bergamot, neroli, and cedar.",
+    relatedNotes: ["bergamot", "neroli", "cedar", "mandarin"],
+  },
+  {
+    slug: "mandarin",
+    name: "Mandarin",
+    summary:
+      "Sweet, soft, and almost candy-like — the gentlest citrus and the most crowd-pleasing top note in feminine perfumery.",
+    description:
+      "Mandarin oil is cold-pressed from the rind of Citrus reticulata, primarily grown in Italy and Brazil. It's the sweetest and softest of the citrus oils — less sharp than lemon, less bitter than grapefruit, with a candy-like, almost floral sweetness. Mandarin is the opening of Thierry Mugler Angel (mandarin + bergamot + chocolate), Atelier Cologne Orange Sanguine, and many modern feminine compositions. Tangerine and clementine are similar; satsuma and 'green mandarin' are sharper and greener.",
+    scentProfile: "Sweet, soft, candy-like citrus, slightly floral",
+    family: "Citrus",
+    longevity: "Short",
+    typicalUse:
+      "Top note in feminine florals, gourmands, and fruity compositions; pairs with bergamot, vanilla, and orange-blossom.",
+    relatedNotes: ["bergamot", "orange-blossom", "vanilla", "neroli"],
+  },
+  {
+    slug: "dark-chocolate",
+    name: "Dark Chocolate",
+    summary:
+      "Cocoa-dry, bitter, and slightly smoky — the gourmand base that built Thierry Mugler Angel and the entire 'praline' genre.",
+    description:
+      "Dark chocolate in perfumery is built from cocoa absolute (extracted from roasted cacao beans) plus vanilla, patchouli, and synthetic furaneol. It smells of dry cocoa powder, roasted nuts, and a bitter, slightly smoky richness — distinctly 'dark' rather than milk chocolate. Cocoa absolute is the structural backbone of Thierry Mugler Angel (with patchouli and ethyl maltol), the entire 'praline-gourmand' genre, and modern chocolate-amber compositions like Paco Rabanne Black XS.",
+    scentProfile: "Cocoa-dry, bitter, roasted, slightly smoky",
+    family: "Gourmand",
+    longevity: "Long",
+    typicalUse:
+      "Heart-to-base note in gourmands, ambers, and orientals; pairs with vanilla, patchouli, and tonka.",
+    relatedNotes: ["vanilla", "patchouli", "tonka", "amber"],
+  },
+  {
+    slug: "coffee",
+    name: "Coffee",
+    summary:
+      "Roasted, bitter, and slightly smoky — the gourmand that pairs most naturally with leather, tobacco, and vanilla.",
+    description:
+      "Coffee in perfumery is usually coffee absolute (solvent-extracted from roasted beans) or a synthetic accord of furfuryl thiol, pyrazines, and guaiacol. It smells of roasted coffee, smoke, and a slight caramel sweetness — drier and more bitter than chocolate. Coffee pairs more naturally with 'adult' notes than other gourmands: it's the heart of Maison Margiela Coffee Break, Akkè Kappà Yodhè, and Jo Malone Oat & Cornflower (adjacent), and it's a common pairing with tobacco, leather, and whisky accords.",
+    scentProfile: "Roasted, bitter, smoky, slightly caramel",
+    family: "Gourmand",
+    longevity: "Long",
+    typicalUse:
+      "Heart note in gourmands, orientals, and tobacco compositions; pairs with tobacco, vanilla, and tonka.",
+    relatedNotes: ["tobacco", "vanilla", "tonka", "leather"],
+  },
+  {
+    slug: "honey",
+    name: "Honey",
+    summary:
+      "Sweet, beeswaxy, and slightly animalic — the gourmand-floral that's most natural in indolic white-floral compositions.",
+    description:
+      "Honey in perfumery is usually beeswax absolute (solvent-extracted from honeycomb) or a synthetic accord of phenylacetic acid, methyl anthranilate, and coumarin. It smells of sweet beeswax, pollen, and a faint animalic, almost urinous edge — the source of honey's slightly 'dirty' character. Honey pairs naturally with indolic florals (jasmine, orange blossom, tuberose), and it's the heart of Hermès Hermessence Ambre Narguillé (honey + amber), Jo Malone Nectarine Blossom & Honey, and Paco Rabanne Ultraviolet.",
+    scentProfile: "Sweet, beeswaxy, animalic, slightly floral",
+    family: "Gourmand",
+    longevity: "Long",
+    typicalUse:
+      "Heart note in white florals, orientals, and gourmands; pairs with jasmine, orange-blossom, and amber.",
+    relatedNotes: ["jasmine", "orange-blossom", "amber", "vanilla"],
+  },
+  {
+    slug: "fig",
+    name: "Fig",
+    summary:
+      "Milky, green, and coconut-sweet — the heart of the entire 'fig-leaf' family and the soul of Mediterranean summer scents.",
+    description:
+      "Fig in perfumery usually means fig leaf absolute (green, milky, slightly coconut) rather than fig fruit (sweeter, jam-like). The 'fig' note is built around the lactonic, milky character of the leaf and stem, with a green, slightly coconut-sweet profile. It's the defining note of the entire fig-leaf genre — Diptyque Philosykos, L'Artisan Parfumeur Premier Figuier, and Hermès Un Jardin en Méditerranée all rest on it. Fig is also one of the most 'photorealistic' notes in perfumery: it instantly reads as 'fig tree.'",
+    scentProfile: "Milky, green, coconut-sweet, slightly woody",
+    family: "Green",
+    longevity: "Moderate",
+    typicalUse:
+      "Heart note in fig compositions, Mediterranean scents, and fresh unisex fragrances; pairs with cedar, bergamot, and violet-leaf.",
+    relatedNotes: ["cedar", "bergamot", "violet-leaf", "musk"],
+  },
+  {
+    slug: "mint",
+    name: "Mint",
+    summary:
+      "Cool, camphoraceous, and almost menthol — the brightest aromatic top note and the soul of fresh sport compositions.",
+    description:
+      "Mint in perfumery is usually spearmint (Mentha spicata, sweet and herbal) or peppermint (Mentha piperita, sharper and more menthol). The oil smells of fresh, cool, slightly camphoraceous mint — the most 'cooling' aromatic in perfumery. Mint is the defining top note of fresh sport fragrances (Hermès Terre d'Hermès Eau Intense Vétiver, Paco Rabanne 1 Million Cologne) and a fixture of modern 'mint-julep' compositions. It's volatile and short-lived, but it gives an instant 'lift' to any composition.",
+    scentProfile: "Cool, fresh, camphoraceous, slightly menthol",
+    family: "Aromatic",
+    longevity: "Short",
+    typicalUse:
+      "Top note in sport fragrances, fresh masculines, and aromatic compositions; pairs with bergamot, lavender, and vetiver.",
+    relatedNotes: ["bergamot", "lavender", "vetiver", "juniper"],
+  },
+  {
+    slug: "rosemary",
+    name: "Rosemary",
+    summary:
+      "Herbal, camphoraceous, and slightly medicinal — the original cologne aromatic and the soul of Mediterranean herbs.",
+    description:
+      "Rosemary (Rosmarinus officinalis) is steam-distilled into an oil that smells of fresh, camphoraceous herbs with a faintly medicinal, woody edge. It's one of the four original cologne aromatics (with bergamot, lemon, and neroli) — the defining top of 4711, Acqua di Parma Colonia, and the entire Eau de Cologne tradition. Rosemary is also the soul of many Mediterranean masculine compositions, where it pairs naturally with lavender, cedar, and bergamot.",
+    scentProfile: "Herbal, camphoraceous, medicinal, slightly woody",
+    family: "Aromatic",
+    longevity: "Moderate",
+    typicalUse:
+      "Top note in colognes, aromatic masculines, and Mediterranean compositions; pairs with bergamot, lavender, and cedar.",
+    relatedNotes: ["bergamot", "lavender", "cedar", "juniper"],
+  },
+  {
+    slug: "violet-leaf",
+    name: "Violet Leaf",
+    summary:
+      "Green, peppery, and slightly cucumber — the natural counterpart to powdery violet flower and a niche-favorite green.",
+    description:
+      "Violet leaf absolute is solvent-extracted from the leaves of the violet plant (not the flower) and smells of fresh, green, slightly cucumber-like vegetation with a faint pepperiness. It's entirely different from the powdery ionone 'violet flower' note — green rather than floral. Violet leaf is the heart of Tom Ford Purple Violet, Creed Green Valley, and many niche green compositions. It's also the source of the 'green' top in many masculine fougères.",
+    scentProfile: "Green, fresh, cucumber-like, slightly peppery",
+    family: "Green",
+    longevity: "Moderate",
+    typicalUse:
+      "Top-to-heart note in green compositions, modern fougères, and cucumber-melon accords; pairs with fig, bergamot, and iris.",
+    relatedNotes: ["fig", "bergamot", "iris", "violet"],
+  },
+  {
+    slug: "black-currant",
+    name: "Black Currant",
+    summary:
+      "Tart, fruity, and slightly cat-like — the most 'perfumery' fruit and the soul of modern fruity-floral openings.",
+    description:
+      "Black currant in perfumery is usually a synthetic accord built around buchu leaf oil (which smells of black currant and cat urine) and various sulfuric fruity molecules. It smells of tart, juicy berry with a characteristic slightly 'catty' sulfurous edge — the same molecule that gives Sauvignon Blanc its signature. Black currant is the most-used fruit in modern perfumery: it's in Lancôme La Vie Est Belle, Mugler Aura, and dozens of fruity-florals since 2010. The 'catty' edge is dose-dependent — at high levels it's unmistakably cat pee.",
+    scentProfile: "Tart, juicy, fruity, slightly sulfurous",
+    family: "Fruity",
+    longevity: "Moderate",
+    typicalUse:
+      "Top note in fruity florals, fresh compositions, and cocktail-style fragrances; pairs with bergamot, rose, and peach.",
+    relatedNotes: ["bergamot", "rose", "peach", "mandarin"],
+  },
+  {
+    slug: "peach",
+    name: "Peach",
+    summary:
+      "Soft, fuzzy, and lactonic — the most 'lactonic' fruit and the soul of vintage aldehydic florals.",
+    description:
+      "Peach in perfumery is built around gamma-undecalactone (the so-called 'aldehyde C-14'), a synthetic lactone that smells of soft, creamy, slightly coconut-like peach skin. It's the defining lactonic fruit — softer and less tart than apricot, with a fuzzy, skin-like richness. Peach is the heart of vintage aldehydic florals (Chanel No. 5, Rochas Femme) and a fixture of the entire 'lactonic floral' family. Modern peach compositions include Tom Ford Peach Noise and a number of niche fruity florals.",
+    scentProfile: "Soft, fuzzy, lactonic, slightly creamy",
+    family: "Fruity",
+    longevity: "Moderate",
+    typicalUse:
+      "Heart note in lactonic florals, fruity compositions, and vintage aldehydics; pairs with osmanthus, jasmine, and rose.",
+    relatedNotes: ["osmanthus", "jasmine", "rose", "bergamot"],
+  },
+  {
+    slug: "sea-salt",
+    name: "Sea Salt",
+    summary:
+      "Briny, mineral, and slightly ozone — the soul of modern 'beach' fragrances and a niche favorite since 2010.",
+    description:
+      "Sea salt in perfumery is a synthetic accord built around salicylates, marine notes (like Calone), and slight mineral-iodine top notes. It smells of briny ocean, sun-warmed skin, and a faintly ozone, almost laundry-like freshness. Sea salt is the defining note of the modern 'beach' genre — Jo Malone Wood Sage & Sea Salt, Maison Margiela Beach Walk, and dozens of niche compositions since 2010. It pairs naturally with citrus, sage, and ambroxan for a 'salty skin' effect.",
+    scentProfile: "Briny, mineral, ozone, slightly fresh",
+    family: "Aquatic",
+    longevity: "Moderate",
+    typicalUse:
+      "Top-to-heart note in beach compositions, aquatic fresh fragrances, and 'salty skin' accords; pairs with bergamot, rosemary, and ambroxan.",
+    relatedNotes: ["bergamot", "ambroxan", "rosemary", "musk"],
+  },
+  {
+    slug: "ambroxan",
+    name: "Ambroxan",
+    summary:
+      "Ambery, musky, and almost weightless — the modern synthetic that defined the 'skin scent' genre since 2010.",
+    description:
+      "Ambroxan (ambroxide) is a synthetic molecule derived from sclareol (clary sage) or, historically, from ambergris. It smells of warm amber, soft musk, and a slightly salty, almost mineral cleanliness — weightless and 'transparent' compared to labdanum or natural ambergris. Ambroxan is the defining base of the modern 'skin scent' genre: Le Labo Another 13, Juliette Has A Gun Not A Perfume, and Escentric Molecules Molecule 02 all rest on it. It's also the dominant base note in Dior Sauvage (heavily dosed), which is why Sauvage projects without ever feeling 'heavy.'",
+    scentProfile: "Ambery, musky, salty-mineral, transparent",
+    family: "Amber",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note in modern skin scents, fresh masculines, and 'transparent' compositions; pairs with bergamot, sea-salt, and iso-e-super.",
+    relatedNotes: ["bergamot", "sea-salt", "iso-e-super", "amber"],
+  },
+  {
+    slug: "iso-e-super",
+    name: "Iso E Super",
+    summary:
+      "Velvety, cedar-like, and subtly warm — the 'transparent wood' that defined the niche-minimalist genre.",
+    description:
+      "Iso E Super is a synthetic woody molecule (a vetiveryl acetate relative) that smells of soft, velvety cedar with a slightly warm, almost pepper-dusty edge. It's notable for being 'transparent' — most people can't smell it strongly, but it gives compositions a 'warm fuzzy' aura that's instantly recognizable. Iso E Super is the defining note of the entire niche-minimalist genre: Escentric Molecules Molecule 01 is pure Iso E Super, and it's the base of Terre d'Hermès, Aventus, and Le Labo Santal 33.",
+    scentProfile: "Velvety, cedar-like, warm, subtly pepper-dusty",
+    family: "Woody",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note in modern woods, niche-minimalist compositions, and transparent masculines; pairs with cedar, ambroxan, and vetiver.",
+    relatedNotes: ["cedar", "ambroxan", "vetiver", "bergamot"],
+  },
+  {
+    slug: "civet",
+    name: "Civet",
+    summary:
+      "Fecal, animalic, and deeply warm — the most powerful fixative in classical perfumery, now universally synthetic.",
+    description:
+      "Natural civet comes from the perineal gland of the African civet cat, and historically it was scraped from caged animals — a practice now banned in most of the world. Modern 'civet' is synthetic (civetone and related macrocyclic musks). It smells of fecal, animalic, leathery warmth — stronger and more 'fecal' than castoreum. Civet was the secret fixative in almost every classical floral (Joy, N°5 vintage, Shalimar), where it gave compositions 'depth' and 'skin intimacy.' Used at trace levels it's indolic-warm; at high levels it's unmistakably fecal.",
+    scentProfile: "Fecal, animalic, warm, leathery",
+    family: "Musky",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note and fixative in classical florals, orientals, and leather compositions; pairs with rose, jasmine, and musk.",
+    relatedNotes: ["rose", "jasmine", "musk", "ambergris"],
+  },
+  {
+    slug: "ambergris",
+    name: "Ambergris",
+    summary:
+      "Marine, tobacco-like, and warmly animalic — the legendary whale secretion that's the most prized fixative in perfumery.",
+    description:
+      "Ambergris is a waxy secretion produced in the digestive tract of sperm whales, ejected into the ocean and aged by sun and salt for years. Natural ambergris is rare, expensive, and ethically fraught (it's only collected after beaching, but whale populations are protected). It smells of marine, tobacco-like, slightly fecal warmth with a 'sweet ocean' character that's unlike anything else. Synthetic ambergris (ambroxan, ambroxide, cetalox) is now the universal substitute. Natural ambergris tincture appears in a handful of ultra-luxury compositions; everything else uses the synthetics.",
+    scentProfile: "Marine, tobacco-like, warm, slightly animalic",
+    family: "Amber",
+    longevity: "Very Long",
+    typicalUse:
+      "Base note and fixative in luxury compositions, ambers, and marine florals; pairs with ambroxan, musk, and rose.",
+    relatedNotes: ["ambroxan", "musk", "rose", "amber"],
   },
 ];
 

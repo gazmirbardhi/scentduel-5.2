@@ -147,15 +147,19 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </header>
 
-        <div className="relative mb-8 overflow-hidden rounded-lg bg-muted" style={{ aspectRatio: "16 / 9" }}>
-          <img
-            src={post.featuredImage}
-            alt={post.featuredImageAlt}
-            width={1200}
-            height={675}
-            className="h-full w-full object-cover"
-          />
-        </div>
+        {/* Hero image — full-width banner */}
+        <figure className="mb-10 -mx-4 md:mx-0 md:rounded-xl overflow-hidden bg-muted">
+          <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
+            <img
+              src={post.featuredImage}
+              alt={post.featuredImageAlt}
+              width={1600}
+              height={900}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <figcaption className="sr-only">{post.featuredImageAlt}</figcaption>
+        </figure>
 
         <PostContent content={post.content} />
 

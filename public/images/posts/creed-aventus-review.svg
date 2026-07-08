@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3d3528"/>
+      <stop offset="100%" stop-color="#1a1610"/>
+    </linearGradient>
+    <linearGradient id="btl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.04)"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#d4a574" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <!-- Ambient glow -->
+  <ellipse cx="1100" cy="450" rx="500" ry="400" fill="url(#glow)"/>
+  <!-- Large bottle silhouette on the right -->
+  <g transform="translate(1180,200) scale(1.6)">
+    <rect x="60" y="0" width="80" height="40" rx="4" fill="rgba(0,0,0,0.35)"/>
+    <rect x="72" y="40" width="56" height="28" fill="rgba(0,0,0,0.4)"/>
+    <path d="M 30 68 Q 30 90 55 102 L 55 360 Q 55 392 100 392 L 140 392 Q 185 392 185 360 L 185 102 Q 210 90 210 68 Z" fill="url(#btl)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+    <rect x="65" y="200" width="110" height="2" fill="rgba(255,255,255,0.2)"/>
+    <rect x="65" y="280" width="110" height="2" fill="rgba(255,255,255,0.2)"/>
+  </g>
+  <!-- Scent trail dots -->
+  <g fill="rgba(255,255,255,0.15)">
+    <circle cx="1050" cy="200" r="3"/>
+    <circle cx="1000" cy="160" r="2.5"/>
+    <circle cx="970" cy="120" r="2"/>
+    <circle cx="920" cy="90" r="1.5"/>
+  </g>
+  <!-- Title text on the left -->
+  <text x="100" y="430" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="bold" fill="rgba(255,255,255,0.97)">Creed Aventus</text>
+  <text x="100" y="490" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">The Pineapple King After 15 Years</text>
+  <rect x="100" y="520" width="120" height="4" fill="#d4a574"/>
+  <text x="100" y="580" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.5)">ScentDuel · Fragrance Review</text>
+</svg>
