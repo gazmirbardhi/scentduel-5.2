@@ -11,6 +11,9 @@ import { ReadingProgress } from "@/components/blog/reading-progress";
 import { PostContent } from "@/components/blog/post-content";
 import { ReviewPoll } from "@/components/blog/review-poll";
 import { AffiliateDisclosure } from "@/components/blog/affiliate-disclosure";
+import { TableOfContents } from "@/components/blog/table-of-contents";
+import { Tldr } from "@/components/blog/tldr";
+import { AiQuickQuestion } from "@/components/blog/ai-quick-question";
 import { PostCard } from "@/components/cards/post-card";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
@@ -100,7 +103,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <ReadingProgress />
-      <article data-reading-target className="container mx-auto max-w-3xl px-4 py-8">
+      <article data-reading-target className="container mx-auto max-w-6xl px-4 py-8">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
@@ -130,7 +133,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <h1 className="font-serif text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground">{post.excerpt}</p>
+          <p className="mt-4 text-base text-muted-foreground md:text-lg">{post.excerpt}</p>
           <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <User className="h-4 w-4" aria-hidden="true" />
@@ -148,7 +151,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </header>
 
         {/* Hero image — full-width banner */}
-        <figure className="mb-10 -mx-4 md:mx-0 md:rounded-xl overflow-hidden bg-muted">
+        <figure className="mb-8 -mx-4 md:mx-0 md:rounded-xl overflow-hidden bg-muted">
           <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
             <img
               src={post.featuredImage}
@@ -161,7 +164,22 @@ export default async function BlogPostPage({ params }: PageProps) {
           <figcaption className="sr-only">{post.featuredImageAlt}</figcaption>
         </figure>
 
-        <PostContent content={post.content} />
+        {/* Mobile TOC — collapsible, shown above the body */}
+        <TableOfContents items={post.toc} />
+
+        {/* Desktop layout: body + sticky TOC sidebar */}
+        <div className="flex gap-10">
+          <div className="min-w-0 flex-1 max-w-3xl">
+            {/* TL;DR */}
+            {post.tldr && <Tldr text={post.tldr} />}
+
+            <PostContent content={post.content} />
+          </div>
+          {/* Desktop TOC sidebar */}
+          <aside className="hidden w-56 shrink-0 lg:block">
+            <TableOfContents items={post.toc} />
+          </aside>
+        </div>
 
         {/* Affiliate disclosure */}
         <div className="mt-8">
@@ -270,6 +288,15 @@ export default async function BlogPostPage({ params }: PageProps) {
               ))}
             </div>
           </section>
+        )}
+
+        {/* AI Quick Questions — FAQPage JSON-LD for AI search attribution */}
+        {post.aiQuestions.length > 0 && (
+          <AiQuickQuestion
+            questions={post.aiQuestions}
+            postTitle={post.title}
+            postUrl={`${siteConfig.url}/blog/${post.slug}`}
+          />
         )}
       </article>
     </>

@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/site";
 import { buildWebsiteJsonLd } from "@/lib/seo";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { BackToTop } from "@/components/layout/back-to-top";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -120,6 +121,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <BackToTop />
         </ThemeProvider>
         <Toaster richColors position="top-center" />
         <script

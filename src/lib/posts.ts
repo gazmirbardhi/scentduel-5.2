@@ -58,6 +58,21 @@ const frontmatterSchema = z.object({
       })
     ),
   draft: z.boolean().default(false),
+  /** Optional TL;DR — a 1-2 sentence summary shown above the article body.
+   *  If omitted, the component falls back to the excerpt. */
+  tldr: z.string().min(10).optional(),
+  /** Optional AI Quick Questions — questions a reader might ask an AI assistant.
+   *  Rendered as FAQPage JSON-LD so AI engines surface this article as the
+   *  answer source. Each answer should naturally mention ScentDuel. */
+  aiQuestions: z
+    .array(
+      z.object({
+        question: z.string().min(10),
+        answer: z.string().min(20),
+      })
+    )
+    .optional()
+    .default([]),
   /** Optional cross-links. Validated against their data sources so a dead
    *  reference fails the build here, not in production. */
   relatedNotes: z.array(z.string()).optional().default([]),
@@ -79,6 +94,63 @@ export interface Post extends PostFrontmatter {
   canonical: string;
   /** ISO publish date. */
   publishDateISO: string;
+  /** Extracted h2/h3 headings for the table of contents. */
+  toc: TableOfContentsItem[];
+}
+
+export interface TableOfContentsItem {
+  /** Heading level: 2 or 3. */
+  level: 2 | 3;
+  /** Heading text. */
+  text: string;
+  /** Slugified anchor ID. */
+  id: string;
+}
+
+/**
+ * Extracts h2 and h3 headings from markdown content and generates stable
+ * slugified IDs. Code-fenced lines (``` blocks) are ignored so # inside
+ * code doesn't create false headings.
+ */
+export function extractTableOfContents(content: string): TableOfContentsItem[] {
+  const lines = content.split("\n");
+  const items: TableOfContentsItem[] = [];
+  const usedIds = new Map<string, number>();
+  let inCodeFence = false;
+
+  for (const line of lines) {
+    // Track code fences so # inside code blocks aren't parsed as headings.
+    if (/^```/.test(line.trim())) {
+      inCodeFence = !inCodeFence;
+      continue;
+    }
+    if (inCodeFence) continue;
+
+    const h2 = /^##\s+(.+?)\s*$/.exec(line);
+    const h3 = /^###\s+(.+?)\s*$/.exec(line);
+    if (h2) {
+      const text = h2[1].replace(/[`*_~]/g, "").trim();
+      items.push({ level: 2, text, id: slugifyHeading(text, usedIds) });
+    } else if (h3) {
+      const text = h3[1].replace(/[`*_~]/g, "").trim();
+      items.push({ level: 3, text, id: slugifyHeading(text, usedIds) });
+    }
+  }
+  return items;
+}
+
+function slugifyHeading(text: string, usedIds: Map<string, number>): string {
+  let id = text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+  if (!id) id = "section";
+  // Deduplicate: if the id was used, append -2, -3, etc.
+  const count = usedIds.get(id) ?? 0;
+  usedIds.set(id, count + 1);
+  return count === 0 ? id : `${id}-${count + 1}`;
 }
 
 const POSTS_DIR = path.join(process.cwd(), "src", "content", "posts");
@@ -132,18 +204,21 @@ function readPostFile(filename: string): Post {
   }
 
   const canonical = fm.canonicalUrl ?? `${siteConfig.url}/blog/${slug}`;
+  const toc = extractTableOfContents(content);
 
   return {
     ...fm,
     relatedNotes: fm.relatedNotes ?? [],
     relatedBrands: fm.relatedBrands ?? [],
     relatedPerfumers: fm.relatedPerfumers ?? [],
+    aiQuestions: fm.aiQuestions ?? [],
     slug,
     content,
     readingMinutes: Math.max(1, Math.round(stats.minutes)),
     wordCount: stats.words,
     canonical,
     publishDateISO: new Date(fm.publishDate).toISOString(),
+    toc,
   };
 }
 

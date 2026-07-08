@@ -27,19 +27,55 @@ function withoutNode<T extends { node?: unknown }>(props: T): Omit<T, "node"> {
   return rest;
 }
 
+/** Recursively extract plain text from React children (for slug generation). */
+function extractText(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(extractText).join("");
+  if (children && typeof children === "object" && "props" in children) {
+    return extractText((children as { props: { children?: React.ReactNode } }).props.children);
+  }
+  return "";
+}
+
+/** Slugify a heading text. MUST match slugifyHeading in lib/posts.ts. */
+function slugify(text: string): string {
+  let id = text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+  if (!id) id = "section";
+  return id;
+}
+
 const components: Components = {
-  h2: (props) => (
-    <h2
-      {...withoutNode(props)}
-      className="mt-10 border-b border-border pb-2 font-serif text-2xl font-bold leading-tight text-foreground"
-    />
-  ),
-  h3: (props) => (
-    <h3
-      {...withoutNode(props)}
-      className="mt-8 font-serif text-xl font-bold leading-tight text-foreground"
-    />
-  ),
+  h2: (props) => {
+    const { children, ...rest } = withoutNode(props);
+    const text = extractText(children);
+    return (
+      <h2
+        {...rest}
+        id={slugify(text)}
+        className="mt-10 scroll-mt-24 border-b border-border pb-2 font-serif text-2xl font-bold leading-tight text-foreground"
+      >
+        {children}
+      </h2>
+    );
+  },
+  h3: (props) => {
+    const { children, ...rest } = withoutNode(props);
+    const text = extractText(children);
+    return (
+      <h3
+        {...rest}
+        id={slugify(text)}
+        className="mt-8 scroll-mt-24 font-serif text-xl font-bold leading-tight text-foreground"
+      >
+        {children}
+      </h3>
+    );
+  },
   a: ({ node: _node, href = "", children, ...rest }) => {
     void _node;
     const affiliate = isAffiliateHref(href);

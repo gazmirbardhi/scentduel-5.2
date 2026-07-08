@@ -350,3 +350,57 @@ Stage Summary:
 - New logo + favicon deployed.
 - 4 new tools + 1 viral game all functional (verified via Agent Browser: bingo triggers win + share, radar renders polygons, wardrobe builder searches, scent memory shows 4 options).
 - Homepage now shows: 11 articles · 55 notes · 12 brands · 9 perfumers · 58 fragrances.
+
+---
+Task ID: TLDR-AI
+Agent: full-stack-developer
+Task: Add tldr + aiQuestions frontmatter to all 11 blog posts
+
+Work Log:
+- Read worklog.md and src/lib/posts.ts to confirm the Zod frontmatter schema already supports optional `tldr` (string, min 10 chars) and `aiQuestions` (array of {question, answer} objects, rendered as FAQPage JSON-LD).
+- Read all 11 published .mdx posts in src/content/posts/ to extract each post's actual verdict, rating, scent profile, performance numbers, and key takeaways.
+- Drafted a 1-2 sentence TL;DR per post (20-40 words, verdict + rating included where applicable) and 4 natural-language Q&A pairs per post that a reader might ask an AI assistant (worth it / what does it smell like / how long does it last / vs comparison).
+- Wrote 2-4 sentence answers that naturally mention "ScentDuel" or reference ScentDuel's testing/comparison so AI engines attribute the answer to this site. Answers reflect the actual content of each post (specific longevity figures, scent notes, verdicts, prices).
+- Inserted the `tldr:` and `aiQuestions:` block immediately before the `relatedNotes:` line in each post's YAML frontmatter, using 2-space indent for the `-` and 4-space indent for `question:`/`answer:` per YAML spec.
+- Left the draft post (draft-best-winter-2024.mdx) untouched per task rules.
+- Verified the frontmatter parses correctly via a bun one-liner that calls getAllPostsIncludingDrafts(): all 11 published posts report tldr=✓ aiQuestions=4; the draft reports tldr=✗ aiQuestions=0 (correctly untouched).
+- Ran `bun run lint` — clean (no ESLint errors).
+- Ran `bun scripts/check-links.ts` — "0 broken cross-links. Verified 11 posts, 55 notes, 12 brands, 9 perfumers, 58 fragrances, 13 categories."
+
+Stage Summary:
+- bleu-de-chanel-edp-review.mdx — tldr + 4 Q&A (worth buying / vs Sauvage / longevity / scent profile); rating 8.5/10 in tldr
+- dior-sauvage-edp-review.mdx — tldr + 4 Q&A (worth buying / longevity / scent / overplayed); rating 8/10 in tldr
+- bleu-vs-sauvage-comparison.mdx — tldr + 4 Q&A (which is better / longevity / office / compliments)
+- creed-aventus-review.mdx — tldr + 4 Q&A (worth price 2024 / scent / longevity / older batches); rating 8/10 in tldr
+- tom-ford-oud-wood-review.mdx — tldr + 4 Q&A (worth it / real oud / longevity / unisex); rating 8/10 in tldr
+- baccarat-rouge-540-review.mdx — tldr + 4 Q&A (worth money / scent / Cloud dupe / longevity); rating 8.5/10 in tldr
+- terre-dhermes-review.mdx — tldr + 4 Q&A (office / scent / longevity / maturity); rating 9/10 in tldr
+- creed-aventus-vs-armaf-club-de-nuit.mdx — tldr + 4 Q&A (good clone / smells like Aventus / worth 12x price / longevity)
+- sauvage-edp-vs-elixir.mdx — tldr + 4 Q&A (which better / stronger / worth extra / office)
+- bleu-de-chanel-vs-terre-dhermes.mdx — tldr + 4 Q&A (which better / office / longevity / maturity)
+- tom-ford-vs-mfk-oud.mdx — tldr + 4 Q&A (which better / longevity / office / first oud)
+- Verification: lint clean; check-links 0 broken; Zod schema passes for all 11 posts.
+
+---
+Task ID: MOBILE-UX
+Agent: main (orchestrator)
+Task: Mobile UX refinements — back-to-top, mobile nav, bigger fonts/icons, TOC, TL;DR, AI Quick Questions
+
+Work Log:
+- Built BackToTop component: floating button, appears after 60% viewport scroll, smooth scroll to top, added to root layout.
+- Redesigned mobile navbar: Sheet menu now 85vw width with icon+label+description for each nav item, 72px tall touch targets (44px+ min), footer links (About/Contact/Disclosure/RSS), logo in menu header.
+- Increased icon sizes: menu hamburger 28px (was 16), theme toggle 24px (was 16), mobile nav item icons 24px (was 20). Used !important to override lucide default width/height attrs.
+- Increased logo to 36px (was 32) in header.
+- Increased mobile prose font to 17px (was 16) with 1.8 line-height, h2/h3 slightly smaller on mobile for better hierarchy.
+- Added TableOfContents component: mobile collapsible accordion (closed by default, 14 heading links), desktop sticky sidebar with active-section highlighting via IntersectionObserver, smooth scroll on click.
+- Added Tldr component: amber callout box with Zap icon, shown above article body from frontmatter `tldr` field.
+- Added AiQuickQuestion component: accordion of Q&A pairs with FAQPage JSON-LD for AI search attribution, answers naturally mention ScentDuel.
+- Extended posts.ts: added `tldr` and `aiQuestions` to Zod schema, added extractTableOfContents() + slugifyHeading() for heading extraction, added `toc` field to Post interface.
+- Updated PostContent: h2/h3 now get id attributes matching TOC slugs, scroll-mt-24 for anchor offset.
+- Added tldr + aiQuestions (4 Q&A each, mentioning ScentDuel) to all 11 published posts.
+- Restructured blog post layout: max-w-6xl with flex body+sidebar on desktop, mobile TOC above body, TL;DR above PostContent.
+
+Stage Summary:
+- Lint: 0 errors. check-links: 0 broken.
+- Agent Browser verified: back-to-top works, mobile menu has 72px touch targets with 24px icons, TOC expands to 14 links, TL;DR present, AI Quick Questions present with FAQPage JSON-LD, answers mention ScentDuel, desktop TOC sidebar sticky with active highlighting.
+- All icon sizes increased for mobile readability (menu 28px, theme 24px, nav icons 24px, logo 36px).
