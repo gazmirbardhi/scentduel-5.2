@@ -140,6 +140,7 @@ export function Header() {
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
                   isActive(item.href) && "bg-accent text-accent-foreground"
                 )}
+                aria-current={isActive(item.href) ? "page" : undefined}
               >
                 {item.label}
               </Link>

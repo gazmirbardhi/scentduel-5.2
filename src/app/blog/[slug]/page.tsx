@@ -7,6 +7,7 @@ import { getBrandsBySlugs } from "@/lib/brandsData";
 import { getPerfumersBySlugs } from "@/lib/perfumersData";
 import { buildMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
+import Image from "next/image";
 import { ReadingProgress } from "@/components/blog/reading-progress";
 import { PostContent } from "@/components/blog/post-content";
 import { ReviewPoll } from "@/components/blog/review-poll";
@@ -43,6 +44,8 @@ export async function generateMetadata({ params }: PageProps) {
     publishedTime: post.publishDateISO,
     modifiedTime: post.updatedDate,
     canonical: post.canonical,
+    tags: post.tags,
+    readingMinutes: post.readingMinutes,
   });
 }
 
@@ -159,12 +162,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Hero image — full-width banner */}
         <figure className="mb-6 -mx-4 md:mx-0 md:rounded-xl overflow-hidden bg-muted">
           <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
-            <img
+            <Image
               src={post.featuredImage}
               alt={post.featuredImageAlt}
               width={1600}
               height={900}
               className="h-full w-full object-cover"
+              priority
             />
           </div>
           <figcaption className="sr-only">{post.featuredImageAlt}</figcaption>

@@ -22,6 +22,10 @@ interface BuildMetadataArgs {
   modifiedTime?: string;
   canonical?: string;
   noIndex?: boolean;
+  /** Tags for article:tag OG metadata. */
+  tags?: string[];
+  /** Reading time in minutes for twitter:label1/data1. */
+  readingMinutes?: number;
 }
 
 /**
@@ -39,6 +43,8 @@ export function buildMetadata({
   modifiedTime,
   canonical,
   noIndex = false,
+  tags,
+  readingMinutes,
 }: BuildMetadataArgs): Metadata {
   const url = abs(path);
   const canonicalUrl = canonical ?? url;
@@ -63,6 +69,7 @@ export function buildMetadata({
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
       ...(publishedTime ? { publishedTime } : {}),
       ...(modifiedTime ? { modifiedTime } : {}),
+      ...(tags && tags.length > 0 ? { tags } : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -70,6 +77,8 @@ export function buildMetadata({
       description,
       images: [ogImage],
       creator: siteConfig.twitterHandle,
+      ...(readingMinutes ? { label1: "Reading time", data1: `${readingMinutes} min` } : {}),
+      ...(type === "article" ? { label2: "Written by", data2: siteConfig.author.name } : {}),
     },
   };
 }
@@ -215,7 +224,10 @@ export function buildWebsiteJsonLd(): Record<string, unknown> {
     description: siteConfig.description,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${siteConfig.url}/blog?q={search_term_string}`,
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
+      },
       "query-input": "required name=search_term_string",
     },
   };
